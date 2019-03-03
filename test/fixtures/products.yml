@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  author: one
+  point_quantity: 1
+  is_gift: false
+
+two:
+  title: MyString
+  description: MyText
+  author: two
+  point_quantity: 1
+  is_gift: false

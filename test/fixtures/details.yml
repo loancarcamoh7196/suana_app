@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unique_identifider: MyString
+  brand: one
+  quantity: 1
+  available: false
+  is_reserved: false
+  av: MyString
+
+two:
+  unique_identifider: MyString
+  brand: two
+  quantity: 1
+  available: false
+  is_reserved: false
+  av: MyString

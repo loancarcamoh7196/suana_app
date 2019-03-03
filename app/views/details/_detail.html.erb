@@ -1,0 +1,21 @@
+<div class=" card col-lg-3 col-md-4 ">
+    <div class="card-body">    
+        <figure>
+            <%# if detail.product.images.attached? %>
+                <%# Product.get_product(detail.product.id).images.each do |image|  %>
+                    <%#= image_tag image.variant(resize: '150x150') %>
+                <%# end %>  
+            <%# else %>
+            <i class="fas fa-shopping-bag fa-8x"></i>
+            <%# end %>
+        </figure>
+        <div class="product-info">
+            <h6><%= detail.product.title.html_safe %></h6>
+            <p><%= detail.price %></p>
+            <%= link_to '<i class="fas fa-heart"></i>'.html_safe, '#', class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos' %>
+            <%= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, '#',class: 'btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' %>
+            <%= link_to '<i class="far fa-eye"></i>'.html_safe, detail_path(detail), class: 'btn btn-sm btn-outline-info', title: 'Ver mas Info' %>
+
+        </div>
+    </div>
+</div>

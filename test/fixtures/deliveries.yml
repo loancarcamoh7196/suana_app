@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delivery_identifider: MyString
+  delivery_date: 2019-02-26
+  billing: one
+
+two:
+  delivery_identifider: MyString
+  delivery_date: 2019-02-26
+  billing: two

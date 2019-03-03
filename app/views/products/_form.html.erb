@@ -1,0 +1,72 @@
+<%# Product - Formulario creación/ edicion  %>
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="row">
+    <div class="form-group col-12 col-lg-6">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group col-12 col-lg-6">
+      <%= form.label :author_id %>
+      <%= form.select :author_id, options_for_select(@authors), {prompt: 'Seleccione autor', require: true} %> 
+    </div>   
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+  
+
+  <div class="row">
+    <div class="form-group col-12 col-lg-6">
+      <%= form.label :point_quantity %>
+      <%= form.number_field :point_quantity, class: 'form-control'  %>
+    </div>
+
+    <div class="form-check col-12 col-lg-6">
+      <%= form.label :is_gift, class: 'form-check-label' %>
+      <%= form.check_box :is_gift, class: 'form-check-check' %>
+    </div>
+  </div>
+
+  <div class="card">
+    <h5 class="card-title">Escoja Categoria que desea</h5>
+    <div class="card-body">
+      <div class="form-group col-12 col-lg-6">
+        <%= form.label :category_id %>
+        <%= form.select :category_id, options_for_select(@categories), {prompt: 'Seleccione categoría', require: true}, { :multiple => true, :size => 5 } %> 
+      </div> 
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Enviar', class: 'btn btn-outline-success col-4' %>
+    <span class=" col-4"></span>
+    <%= link_to 'Volver', products_path, class: 'btn btn-outline-primary col-4' %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $('#product_autor_id').addClass('form-control');
+  });
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>

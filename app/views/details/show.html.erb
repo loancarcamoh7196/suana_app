@@ -1,0 +1,45 @@
+<%# Details - Show  %>
+<%# Permitir ver a todos   %>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 ">
+                    <!-- The slideshow -->
+                    <%# @product.images.each do |i|  %>
+                        <%#= image_tag i.variant(resize: '350x350'), class: 'img-fluid'%>
+                    <%# end %>
+                </div>    
+                
+                <div class="col-6">
+                    <h3 class="card-title">
+                        <%= "#{@detail.product.title}".html_safe %>
+                        <%= @detail.product.is_gift ? '<span class="badge  badge-dark">Regalo</span>'.html_safe : nil %>
+                        <%= @detail.product.details.last.is_reserved ? '<span class="badge badge-danger btn-sm">Pre-Venta</span>'.html_safe : nil %>
+                    </h3>
+                    <p><%= "#{@detail.chapter}".html_safe %></p>
+                    <p><%= "#{@detail.product.description}".html_safe %></p>
+                    <p><%= @detail.product.author.name %></p>
+                    <p>
+                        Disponible: <span id="cantidad" value="<%= @detail.quantity %>"><%= @detail.quantity %></span>
+                        
+                    </p>
+                    <p class="badge badge-pill badge-secondary" title="BunnyCoins">
+                        <%= @detail.product.point_quantity %>  <i class="fas fa-coins" style="color: rgb(94.8%, 74.8%, 33.3%);" ></i> bunnycoins
+                    </p>
+                    <div class="row">
+                        <p class="col-sm-6 col-lg-4">
+                        <%= link_to '<i class="fas fa-cart-plus"></i>  Agregar a carrito'.html_safe, detail_orders_path(@detail.id), method: :post, remote: true, class: 'btn btn-outline-primary btn-lg btn-block' %>
+                        <%# link_to 'Add to Cart', product_orders_path(product.id), class: 'btn btn-primary', method: :post %>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <% @clusters.each  do |c|  %>
+                            <span class="bagde"><%= c.category.name %></span>
+                        <% end %>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

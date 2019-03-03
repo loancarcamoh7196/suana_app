@@ -1,0 +1,42 @@
+<%# Products - Index - Solo vendedor y/o admin  %>
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h1>Productos</h1>
+    </div>
+    <div class="col-2">
+      <%= link_to '<i class="fas fa-plus"></i> Nuevo Producto'.html_safe, new_product_path, class: 'btn btn-outline-success' %>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-12">
+      
+      <table class="table table-fullwidth table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Point quantity</th>
+            
+            <th>Is gift</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody id="lista">
+          <%= render @products %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render 'modal' %>
+<br>
+<br>
+<br>
+<br>
+<br>

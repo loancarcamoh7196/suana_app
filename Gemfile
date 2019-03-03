@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mini_magick'
 gem 'faker'
 gem 'devise'
+gem 'image_processing'
