@@ -16,7 +16,7 @@
                     <th>Cantidad</th>
                     <th>Reserva?</th>
                     <th>Disponible?</th>
-                    <th ></th>
+                    <th colspan="2"></th>
                 </tr>
             </thead>
 
@@ -36,6 +36,9 @@
                         </td>
                         <td>
                             <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,lt), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{lt.unique_identifider}" %>
+                        </td>
+                        <td>
+                            <%= link_to '<i class="far fa-edit"></i>'.html_safe,  %>
                         </td>
                     </tr>
                 <% end %>

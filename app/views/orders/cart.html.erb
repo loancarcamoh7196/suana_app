@@ -56,7 +56,9 @@
         No tienes productos en el carro... <br><br>
       <% end %>
       
-      
+      <%= ENV['SUANA_PAYPAL_ID'] %>
+      <%= ENV['SUANA_PAYPAL_SECRET'] %>
+
 
       <%= link_to 'Volver', root_path, class: 'btn btn-info btn-lg' %>
       <%= link_to '<i class="fas fa-cash-register"></i>  Pagar'.html_safe, pre_pay_billings_path, method: :post, class: 'btn btn-success btn-lg float-right' %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :brands
 
   resources :products do 
-    resources :details, only: [:create, :destroy]
+    resources :details, only: [:create, :destroy, :edit, :update]
   end
 
   resources :details, only: [:index, :show] do

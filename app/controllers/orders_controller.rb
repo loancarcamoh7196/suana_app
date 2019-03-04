@@ -20,8 +20,9 @@ class OrdersController < ApplicationController
         format.html { redirect_to detail_path(@detail) }
       end
     end
-   
   end
+
+  
     
   def cart
     
