@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :deliveries
   resources :brands
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:destroy] do
+    patch 'remove_one_item'
     collection do
       get 'cart'
       delete 'empty_cart'
@@ -18,7 +20,13 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  resources :billings, only: [] do
+    collection do
+      post 'prepay'
+      get 'execute'
+    end
+  end
+  
   get 'pages/index'
   get 'pages/home'
   get 'pages/contact'
@@ -27,6 +35,6 @@ Rails.application.routes.draw do
   resources :banners
   resources :categories
 
-  root "details#index"
+  root 'details#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :detail
   belongs_to :billing, optional: true
   belongs_to :user
-
+  
   validates :user_id, presence: true
   
   def self.total_items

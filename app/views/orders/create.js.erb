@@ -1,1 +1,24 @@
-alert('Hola');
+var contadorCompras = parseInt($('#count-cart').html());
+contadorCompras += 1
+$('#count-cart').html(contadorCompras);
+
+var quantityValue = parseInt($('#quantity-<%= @order.id %>').html());
+quantityValue += 1;
+$('#quantity-<%= @order.id %>').html(quantityValue);
+
+var subtotal = $('#subtotal-<%= @order.id %>').html();
+var priceValue = parseInt($('#price-<%= @order.id %>').html());
+var total = parseInt(subtotal) + parseInt(priceValue);
+
+$('#subtotal-<%= @order.id %>').html(total);
+
+var suma_total = $('#total').html();
+suma_total = parseInt(suma_total) + parseInt(priceValue);
+
+$('#total').html(suma_total);
+
+if(quantityValue == 2){
+    $('#btn-plus-bloque').replaceWith( $('<a href="<%= order_remove_one_item_path(@order.id) %>" class ="btn-outline-danger btn-sm" data-method="patch" data-remote="true" id="btn-plus"><i class="far fa-minus-square" ></i></a>') );
+}else if($('#btn-plus-bloque').length > 0){
+    $('#btn-plus').replaceWith('<i class="far fa-minus-square btn-sm btn-outline-secondary" id="btn-plus-bloque" ></i>');
+}

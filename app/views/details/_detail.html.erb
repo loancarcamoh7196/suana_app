@@ -11,7 +11,9 @@
         </figure>
         <div class="product-info">
             <h6><%= detail.product.title.html_safe %></h6>
-            <p><%= detail.price %></p>
+            <%= detail.chapter.present? ? "<p> Capítulo #{detail.chapter} </p>".html_safe : nil %>
+            <p><%= detail.product.author.name.html_safe %></p>
+            <p>$<%= detail.price.to_i %></p>
             <%= link_to '<i class="fas fa-heart"></i>'.html_safe, '#', class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos' %>
             <%= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, '#',class: 'btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' %>
             <%= link_to '<i class="far fa-eye"></i>'.html_safe, detail_path(detail), class: 'btn btn-sm btn-outline-info', title: 'Ver mas Info' %>

@@ -23,37 +23,43 @@ class OrdersController < ApplicationController
    
   end
     
-      def cart
-        @orders = current_user.cart.order(:id)
-        #@total = @orders.map{|order| order.detail.price}.sum
-        @total = @orders.inject(0){|sum, order| sum += order.details.price * order.quantity }
-      end
+  def cart
     
-      def remove_one_item
-        @order = Order.find(params[:order_id])
-        @order.quantity-=1 if @order.quantity > 1
-        @order.save if @order.changed?
-        redirect_to cart_orders_path, notice: 'Cantidad modificada con éxito!'
-      end
+    @orders = current_user.cart.order(:id)
+    #@total = @orders.map{|order| order.detail.price}.sum
+    @total = @orders.inject(0){|sum, order| sum += order.price.to_i * order.quantity }
+    @count = @orders.inject(0){|sum, order| sum +=  order.quantity }
+  end
     
-      def destroy
-        @order = Order.find(params[:id])
-        @order.destroy
-        redirect_to cart_orders_path, notice: 'Se ha quitado producto del carro!'
-      end
+  def remove_one_item
+    @order = Order.find(params[:order_id])
+    @order.quantity-=1 if @order.quantity > 1
+    @order.save if @order.changed?
+    flash[:warning] = 'Cantidad modificada con éxito!'
+    redirect_to cart_orders_path
+  end
     
-      def buy
-        current_user.cart.update_all(paid: true)
-        redirect_to root_path, notice: 'Se ha pagados los productos exitosamente!'
-      end
-      
-      def bought_products
-        @orders = current_user.orders.where(paid:true)
-      end
-      
-      def empty_cart
-        @orders = current_user.cart
-        @orders.destroy_all
-        redirect_to cart_orders_path, notice: 'Carro vaciado con éxito!'
-      end
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    flash[:warning] = 'Se ha quitado producto del carro!'
+    redirect_to cart_orders_path
+  end
+
+  def buy
+    current_user.cart.update_all(paided: true)
+    flash[:success] = 'Se ha pagados los productos exitosamente!'
+    redirect_to root_path
+  end
+  
+  def bought_products
+    @orders = current_user.orders.where(paid:true)
+  end
+  
+  def empty_cart
+    @orders = current_user.cart
+    @orders.destroy_all
+    flash[:danger] = 'Carro vaciado con éxito!'
+    redirect_to cart_orders_path
+  end
 end
