@@ -16,7 +16,7 @@ class Order < ApplicationRecord
   def self.to_paypal_items
     items = where(nil).map do |order|
 			item ={}
-			item[:name] = order.detail.product.name + order.detail.chapter
+			item[:name] = "#{order.detail.product.title} #{order.detail.chapter}"
 			item[:sku] = order.detail.id.to_s
 			item[:price] = order.price.to_s
 			item[:currency] = 'USD'

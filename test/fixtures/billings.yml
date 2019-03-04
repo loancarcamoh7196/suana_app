@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  value: 1.5
-  delivery_method: 1
+  code: MyString
+  payment_method: MyString
+  amount: 9.99
+  currency: MyString
+  user: one
 
 two:
-  value: 1.5
-  delivery_method: 1
+  code: MyString
+  payment_method: MyString
+  amount: 9.99
+  currency: MyString
+  user: two

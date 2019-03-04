@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_201847) do
+ActiveRecord::Schema.define(version: 2019_03_04_213205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,13 @@ ActiveRecord::Schema.define(version: 2019_03_04_201847) do
   end
 
   create_table "billings", force: :cascade do |t|
-    t.float "value"
-    t.integer "delivery_method"
+    t.string "code"
+    t.string "payment_method"
+    t.decimal "amount", precision: 5, scale: 2
+    t.string "currency"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_billings_on_user_id"
   end
 
@@ -85,9 +87,9 @@ ActiveRecord::Schema.define(version: 2019_03_04_201847) do
   create_table "deliveries", force: :cascade do |t|
     t.string "delivery_identifider"
     t.date "delivery_date"
-    t.bigint "billing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "billing_id"
     t.index ["billing_id"], name: "index_deliveries_on_billing_id"
   end
 
@@ -97,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_201847) do
     t.integer "quantity"
     t.boolean "available"
     t.boolean "is_reserved"
-    t.string "av"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "product_id"
@@ -110,12 +111,12 @@ ActiveRecord::Schema.define(version: 2019_03_04_201847) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "detail_id"
-    t.bigint "billing_id"
     t.boolean "paided", default: false
     t.integer "quantity", default: 0
     t.float "price", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "billing_id"
     t.index ["billing_id"], name: "index_orders_on_billing_id"
     t.index ["detail_id"], name: "index_orders_on_detail_id"
     t.index ["user_id"], name: "index_orders_on_user_id"

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :billings, only: [] do
     collection do
-      post 'prepay'
+      post 'pre_pay'
       get 'execute'
     end
   end
