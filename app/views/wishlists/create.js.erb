@@ -1,0 +1,3 @@
+var boton = '<a class="btn btn-sm btn-outline-secondary" title="Quitar a mi Lista de Deseos" id="wishlist-<%= @detail.id %>" data-remote="true" rel="nofollow" data-method="delete" href="<%= detail_wishlist_path(@detail) %>"><i class="fas fa-heart"></i></a>'
+
+$('#wishlist-<%= @detail.id %>').replaceWith(boton);

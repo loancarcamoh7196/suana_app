@@ -1,23 +1,13 @@
-var fila = '<tr id="<%= @detail.id %>">' +"<td><%= @detail.id %></td>"+
-                        + '<td><%= @detail.unique_identifider %></td>' +                 "<td><%= @detail.chapter.present? ? @detail.chapter : '<em> N/A </em>'.html_safe %></td>"+
-                        '<td><%= @detail.brand.name %></td>' +
-                        '<td><%= @detail.price %></td>' +
-                        '<td><%= @detail.quantity %></td>' +
-                        '<td>' +
-                            "<%= @detail.is_reserved ? '<span class=\"badge badge-success\"> Yes </span>'.html_safe : '<span class=\"badge badge-danger\"> No </span>'.html_safe %>"+
-                        '</td>' +
-                        '<td>' +
-                            "<%= @detail.available ? '<span class=\"badge badge-success\"> Yes </span>'.html_safe : '<span class=\"badge badge-danger\"> No </span>'.html_safe %>"+
-                        '</td>'+
-                        '<td>'+
-                            // <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_detail_path(@product,@detail), class: 'btn-outline-warning btn-sm', title: "Editar #{@detail.unique_identifider}", remote: true %>
-                            '<a href="<%= edit_product_detail_path(@product,@detail) %>" class ="btn-outline-warning btn-sm" data-remote="true" title="Editar <%= @detail.unique_identifider %>" > <i class="far fa-edit"></i> </a>'+
-                        '</td>'+
-                        '<td>'+
-                            // <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,@detail), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{@detail.unique_identifider}" %>
-                           ' <a href="<%= product_detail_path(@product, @detail) %>" class ="btn-outline-danger btn-sm" data-method="delete" title="Eliminar <%= @detail.unique_identifider %>" ><i class="fas fa-times" ></i></a>'+
-                        '</td>'+
+// var fila = '<tr id="<%= @detail.id %>">' +"<td><%= @detail.id %></td>"+ '<td><%= @detail.unique_identifider %></td>' + "<td><%= @detail.chapter.present? ? @detail.chapter : '<em> N/A </em>'.html_safe %></td>" + '<td><%= @detail.brand.name %></td>' + '<td><%= @detail.price %></td>' + '<td><%= @detail.quantity %></td>' + '<td>' + "<%= @detail.is_reserved ? '<span class=\"badge badge-success\"> Yes </span>'.html_safe : '<span class=\"badge badge-danger\"> No </span>'.html_safe %>"+ '</td> <td>' + "<%= @detail.available ? '<span class=\"badge badge-success\"> Yes </span>'.html_safe : '<span class=\"badge badge-danger\"> No </span>'.html_safe %>"+ '</td>'+ '<td>'+                            
+//                             '<a href="<%= edit_product_detail_path(@product,@detail) %>" class ="btn-outline-warning btn-sm" data-remote="true" title="Editar <%= @detail.unique_identifider %>" > <i class="far fa-edit"></i> </a>'+
+//                         '</td>'+
+//                         '<td>'+
+//                             // <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,@detail), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{@detail.unique_identifider}" %>
+//                            ' <a href="<%= product_detail_path(@product, @detail) %>" class ="btn-outline-danger btn-sm" data-method="delete" title="Eliminar <%= @detail.unique_identifider %>" ><i class="fas fa-times" ></i></a>'+
+//                         '</td>'+
                         
-                    '</tr>';
-$('#<%= @detail.id %>').replaceWith(fila);
-$('#modal').modal('hide');
+//                     '</tr>';
+
+
+$('#<%= @detail.id %>').replaceWith("<%= j render 'details/detail-row', product: @product, detail: @detail %>");
+$('#modal').modal('hide');  

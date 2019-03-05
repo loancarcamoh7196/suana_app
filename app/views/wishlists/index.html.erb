@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <h2>Tu Lista de Deseos</h2>
+        <hr>
+    </div>
+    
+    <% if @wishlists.present? %>
+      <%= render @wishlists %>
+      <% else %>
+      <p> No has agregado productos a tu lista de deseos</p>
+    <% end %>
+    
+  </div>
+</div>

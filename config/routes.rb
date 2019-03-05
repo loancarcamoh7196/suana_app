@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :details, only: [:index, :show] do
     resource :orders, only: :create
+    resource :wishlist, only: [:create, :destroy]
   end
+
+  resources :wishlists, only: :index
 
   resources :orders, only: [:destroy] do
     patch 'remove_one_item'

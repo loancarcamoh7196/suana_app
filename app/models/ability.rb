@@ -11,6 +11,7 @@ class Ability
       can :manage, [Product, Detail]
     elsif user.user?
       can [:index, :show], [Detail]
+      cannot :manage, [Product]
     else
       can [:index, :show], [Detail]
     end
