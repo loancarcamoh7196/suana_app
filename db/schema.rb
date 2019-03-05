@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_134801) do
+ActiveRecord::Schema.define(version: 2019_03_05_174634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 2019_03_05_134801) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_clusters_on_category_id"
     t.index ["product_id"], name: "index_clusters_on_product_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "description"
+    t.boolean "banned", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "detail_id"
+    t.index ["detail_id"], name: "index_comments_on_detail_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -179,6 +190,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_134801) do
   add_foreign_key "billings", "users"
   add_foreign_key "clusters", "categories"
   add_foreign_key "clusters", "products"
+  add_foreign_key "comments", "details"
+  add_foreign_key "comments", "users"
   add_foreign_key "deliveries", "billings"
   add_foreign_key "details", "brands"
   add_foreign_key "details", "products"

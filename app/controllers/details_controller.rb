@@ -6,10 +6,9 @@ class DetailsController < ApplicationController
   def index
     respond_to do |format|
       if !params[:buscador].nil?
-        if params[:buscador].blank? 
-          
+        if params[:buscador].blank?
           @details = Detail.all
-        elsif params[:buscador].length >=3
+        elsif params[:buscador].length >= 3
           # @details = Detail.where('product.title LIKE ?', "%#{params[:buscador]}%")
           @details = Detail.joins(:product).where('title LIKE ?', "%#{params[:buscador]}%")
         end
@@ -23,10 +22,17 @@ class DetailsController < ApplicationController
   
   def show
     detail = Detail.where(id: params[:id]).first
+    #Mostrar Tags de Categoria
     @clusters = Cluster.where(product: detail.product.id )
     
+    #Necesario par formularios
     @brands = Brand.all.pluck(:name, :id)
+
     @list_detail = Detail.where(detail_id: params[:id])
+    
+    #Necesario para mostrar Comentarios 
+    @comments = Comment.where(detail: @detail).order('created_at DESC')
+    @comment = Comment.new
   end
   
   #Desde productos show creamos  un detalle

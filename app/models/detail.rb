@@ -10,6 +10,9 @@ class Detail < ApplicationRecord
   #Para active storage de varias imagenes
   has_many_attached :images
 
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :comments
+
   def in_wishlist(user)
     wishlists.where(user: user).first
   end

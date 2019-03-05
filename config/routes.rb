@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   resources :deliveries
   resources :brands
 
-  resources :products do 
-    resources :details, only: [:create, :destroy, :edit, :update]
+  resources :products do
+    resources :details, only: %i[create destroy edit update]
   end
 
-  resources :details, only: [:index, :show] do
+  resources :details, only: %i[index show] do
     resource :orders, only: :create
-    resource :wishlist, only: [:create, :destroy]
+    resource :wishlist, only: %i[create destroy]
+    resources :comments, only: %i[new create edit update destroy]
   end
-
+  
   resources :wishlists, only: :index
 
   resources :orders, only: [:destroy] do

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  banned: false
+  user: one
+
+two:
+  description: MyText
+  banned: false
+  user: two

@@ -1,0 +1,12 @@
+<%= form_with(model: [detail, comment]) do |f| %>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', require: true %>
+  </div>
+  
+  <br><br>
+  <div class="actions">
+    <%= f.submit 'Enviar', class: 'btn btn-outline-success ' %>
+  </div>
+<% end %>
+    

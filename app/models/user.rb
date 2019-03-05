@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   has_many :wishlists, dependent: :destroy
   has_many :details, through: :wishlists
+
+  has_many :comments, dependent: :destroy
+  
+
   #Enum de la clase
   enum role: %i[user vendor admin ghest]
   enum phone_type: %i[celular fijo]

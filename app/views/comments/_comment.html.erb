@@ -1,0 +1,23 @@
+<div class="col-12" id="<%= comment.id %>">
+  <div class="card mb-3" >
+    <div class="row ">
+      <div class="col-md-2 ">
+        <i class="fas fa-user-ninja fa-10x mr-md-3"></i>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title"><%= comment.user.name %></h5>
+          <% if comment.user == current_user %>
+            <%= link_to 'Eliminar'.html_safe, detail_comment_path(comment.detail, comment), class: 'btn btn-danger btn-sm float-right', remote: true, method: :delete %>  
+            <%= link_to 'Editar'.html_safe, edit_detail_comment_path(comment.detail, comment), remote: true, class: 'btn btn-success btn-sm float-right' %>
+          <% end %>
+          <p class="card-text">
+            <%= comment.description %>
+          </p>
+          
+          <p class="card-text"><small class="text-muted"><%= comment.created_at %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
