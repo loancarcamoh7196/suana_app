@@ -17,7 +17,7 @@ class BillingsController < ApplicationController
 
   def execute
     paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
-    byebug
+    
     if paypal_payment.execute(payer_id: params[:PayerID])
       #render plain: ':)'
       total = paypal_payment.transactions.first.amount.total
@@ -30,6 +30,12 @@ class BillingsController < ApplicationController
       )
     
       orders = current_user.cart
+
+      
+      #Actualiza monto disponible  
+      orders.each do |o|
+        Detail.where(id: o.detail.id).update_all(quantity: o.detail.quantity - o.quantity)
+      end
       orders.update_all(paided: true, billing_id: billing.id)
       flash[:success] = 'El pago se ha realizado con éxito!!! ;)'
       redirect_to root_path

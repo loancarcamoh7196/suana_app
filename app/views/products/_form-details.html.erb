@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="form-group col-sm-6 col-lg-3">
-                    <%= f.label :price %>
-                    <%= f.number_field :price, value: 'Precio', class: 'form-control', require: true %>
+                    <%= f.label :price, value: 'Precio' %>
+                    <%= f.number_field :price, class: 'form-control', require: true %>
                 </div>
 
                 <div class="form-group col-sm-6 col-lg-3">
@@ -53,7 +53,7 @@
                     <%= f.label :is_reserved, "¿Es reserva?", class: 'form-check-label' %>
                 </div>
 
-                <div class="form-group form-check ol-sm-12 col-lg-5">
+                <div class="form-group form-check col-sm-12 col-lg-5">
                     <%= f.check_box :available, class: 'form-check-input' %>
                     <%= f.label :available, "Disponible", class: 'form-check-label' %>
                 </div>    

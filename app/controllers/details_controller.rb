@@ -24,11 +24,10 @@ class DetailsController < ApplicationController
   def show
     detail = Detail.where(id: params[:id]).first
     @clusters = Cluster.where(product: detail.product.id )
-    @details = Detail.new
+    
     @brands = Brand.all.pluck(:name, :id)
     @list_detail = Detail.where(detail_id: params[:id])
   end
-  
   
   #Desde productos show creamos  un detalle
   def create
@@ -36,7 +35,7 @@ class DetailsController < ApplicationController
     @detail.product_id = params[:product_id]
     
     if @detail.save
-      flash[:success] = "Detalle de Producto agregado exitosamente. "
+      flash[:success] = 'Detalle de Producto agregado exitosamente. '
       redirect_to product_path(params[:product_id])
     else
       flash[:error] = "Something went wrong"
@@ -56,6 +55,29 @@ class DetailsController < ApplicationController
     end
   end
   
+  def edit
+    @product = Product.find(params[:product_id])
+    detail = Detail.where(id: params[:id]).first
+    @clusters = Cluster.where(product: detail.product.id )
+    @brands = Brand.all.pluck(:name, :id)
+
+    respond_to { |format| format.js }
+  end
+  
+  def update
+    @product = Product.find(params[:product_id])
+   
+    respond_to do |format|
+      if @detail.update(detail_params)
+        format.js
+      else
+        flash[:danger] = 'Error. Intente nuevamente'
+        format.html { redirect_to product_path(params[:product_id]) }
+      end
+    end
+  end
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_detail

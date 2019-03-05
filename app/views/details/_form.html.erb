@@ -1,4 +1,50 @@
-<div class="form-group">
-    <%= form.label :images %>
-    <%= form.file_field :images, class: 'form-control', multiple: true %>
-  </div>
+  <%= form_with(model: [product, detail]) do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :unique_identifider %>
+        <%= f.text_field :unique_identifider, class: 'form-control', require: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price, value: 'Precio' %>
+        <%= f.number_field :price, class: 'form-control', require: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :quantity, "Cantidad" %>
+        <%= f.number_field :quantity, class: 'form-control', require: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :chapter, 'Capítulo' %>
+        <%= f.text_field :chapter, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :brand_id, "Marca o Editorial" %>
+        <%= f.select :brand_id, options_for_select(@brands), { include_blank: 'Seleccione editorial o marca', class: 'form-control', require: true} %> 
+      </div>
+
+      <div class="form-group">
+        <%= f.label :images, 'Imagenes asociadas' %>
+        <%= f.file_field :images, multiple: true,  class: 'form-control-file' %>
+      </div>
+    
+
+    
+      <div class="form-group form-check ">
+        <%= f.check_box :is_reserved, class: 'form-check-input' %>
+        <%= f.label :is_reserved, "¿Es reserva?", class: 'form-check-label' %>
+      </div>
+
+      <div class="form-group form-check ">
+        <%= f.check_box :available, class: 'form-check-input' %>
+        <%= f.label :available, "Disponible", class: 'form-check-label' %>
+      </div>    
+    
+    <br><br>
+    <div class="actions">
+      <%= f.submit 'Enviar', class: 'btn btn-outline-success ' %>
+    </div>
+  <% end %>
+    
