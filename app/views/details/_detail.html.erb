@@ -19,10 +19,11 @@
                 <% if detail.in_wishlist(current_user) != nil %>
                     <%= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :delete, class: 'btn btn-sm btn-outline-secondary', title: 'Eliminar a mi Lista de Deseos', remote: true, id: "wishlist-#{detail.id}" %> 
                 <% else %>
-                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos', remote: true, id: "wishlist-#{detail.id}" %> 
+                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, remote: true, class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos',  id: "wishlist-#{detail.id}" %> 
                 <% end %>     
             <% else %>
-                <%= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos', remote: true, id: "wishlist-#{detail.id}" %> 
+                <%#= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, class: 'btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos', remote: true, id: "wishlist-#{detail.id}" %> 
+                N
             <% end %>
             
             <%= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, '#',class: 'btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' , remote: true %>
