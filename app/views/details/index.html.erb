@@ -16,7 +16,18 @@
 
 <div class="container">
     <div class="row" id="lista">
-        <%= render @details %>      
+    <section class="category-section spad">
+		<div class="container">
+			<div class="row">
+                <%= render 'shared/asize' %>
+                <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+					<div class="row">
+                    <%= render @details %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>      
     </div>
 </div>
 
