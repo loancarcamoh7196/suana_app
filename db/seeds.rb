@@ -1253,19 +1253,22 @@ Category.destroy_all
 categories = [
     {
         name: 'Revista',
-        description: ''
+        description: '',
     },{
         name: 'Manga',
-        description: ''
+        description: '',
+        
     },{
         name: 'Libro',
-        description: ''
+        description: '',
     },{
         name: 'Comic',
-        description: ''
+        description: '',
+        
     },{
         name: 'Shounen',
-        description: ''
+        description: '',
+        
     },{
         name: 'Mecha',
         description: ''

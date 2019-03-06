@@ -1,6 +1,6 @@
 class DetailsController < ApplicationController
   before_action :set_detail, only: %i[show edit update destroy]
-  load_and_authorize_resource
+  # load_and_authorize_resource
   
   #Catalogo - Vista de detalle Producto disponibles
   #Arreglar que ve administrador y ver usuario comun
@@ -84,10 +84,29 @@ class DetailsController < ApplicationController
     end
   end
 
+  def view_for_category
+    @details = data_for_category(params[:name])
+    respond_to :js
+  end
+  
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_detail
     @detail = Detail.find(params[:id])
+  end
+
+  private
+  def data_for_category(category_name)
+    cluster = Cluster.joins("INNER JOIN categories ON  categories.id = clusters.category_id AND categories.name LIKE '#{category_name}'" ).first
+    
+    if cluster != nil
+      details_for_cluster = Detail.where(product_id: cluster.product_id)
+    else
+      details_for_cluster = Detail.where('1 =2')
+    end
+    
+    return details_for_cluster
   end
 
   private

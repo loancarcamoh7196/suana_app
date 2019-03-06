@@ -1,0 +1,8 @@
+var datos = "<%= @details.present? %>";
+var values = '<%= @details %>';
+
+if(values.length > 0 && datos !="false"){
+  $('#lista').html("<%= j render @details %>");
+}else{
+  $('#lista').html("<p> No se ha encontrado resultado </p>");
+}

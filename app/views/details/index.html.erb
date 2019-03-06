@@ -1,45 +1,43 @@
 <%# Detail - Index - Catalogo  %>
 <div class="container">
+  <div class="row">
+    <h1 class="col-12">Catálogo </h1>
+    <%# Buscador pot título %>
+    <div class="input-group mb-3">
+      <div class="header-search-form">
+        <input type="text" name="buscador" id="buscador" class="form-control" placeholder="Busqueda por  título">
+        <button><i class="flaticon-search"></i></button>                    
+      </div>
+      <div class="text-muted text-center">Recuerde que el buscador es sensible a Mayúsculas</div>
+    </div>   
+  </div>
+</div>
+
+<%# Cuerpo del Catálogo %>
+<section class="category-section spad">
+  <div class="container">
     <div class="row">
-        <h1 class="col-12">Catálogo </h1>
+      <%# Buscador por categoría %>
+      <%= render 'shared/asize' %>
 
-            <div class="input-group mb-3">
-                <div class="header-search-form">
-                    <input type="text" name="buscador" id="buscador" class="form-control" placeholder="Busqueda por  título">
-                    <button><i class="flaticon-search"></i></button>                    
-                </div>
-                <div class="text-muted text-center">Recuerde que el buscador es sensible a Mayúsculas</div>
-            </div>
-            
-    </div>
-</div>
-
-<div class="container">
-    <div class="row" id="lista">
-    <section class="category-section spad">
-		<div class="container">
-			<div class="row">
-                <%= render 'shared/asize' %>
-                <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
-					<div class="row">
-                    <%= render @details %>
-                    </div>
-                </div>
-            </div>
+      <%# Detalles %>
+      <div class="col-lg-9 ">
+        <div class="row" id="lista">
+          <%= render @details %>
         </div>
-    </section>      
+      </div>
     </div>
-</div>
-
+  </div>
+</section>      
+    
+<%# Scritp buscador %>
 <script>
   $('#buscador').keyup(function () {
     var searchQuery = $('#buscador').val();
-    
-        $.ajax({
-        type: "GET",
-        url: "<%= details_path %>",
-        data: { buscador: searchQuery }
-        });
-    
+    $.ajax({
+      type: "GET",
+      url: "<%= details_path %>",
+      data: { buscador: searchQuery }
+    });
   });
 </script>

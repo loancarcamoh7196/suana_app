@@ -16,6 +16,7 @@ class Ability
       can [:index, :create, :destroy], Wishlist
     else
       can [:index, :show], [Detail, Category]
+      can :view_for_category, Detail
     end
     #
     # The first argument to `can` is the action you are giving the user

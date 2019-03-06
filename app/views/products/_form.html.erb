@@ -20,7 +20,7 @@
     </div>
     <div class="form-group col-12 col-lg-6">
       <%= form.label :author_id %>
-      <%= form.select :author_id, options_for_select(@authors), {prompt: 'Seleccione autor', require: true} %> 
+      <%= form.select( :author_id, options_for_select(@authors), {prompt: 'Seleccione autor', require: true}, class: 'form-control' ) %> 
     </div>   
   </div>
   
@@ -43,11 +43,11 @@
   </div>
 
   <div class="card">
-    <h5 class="card-title">Escoja Categoria que desea</h5>
     <div class="card-body">
-      <div class="form-group col-12 col-lg-6">
-        <%= form.label :category_id %>
-        <%= form.select :category_id, options_for_select(@categories), {prompt: 'Seleccione categoría', require: true}, { :multiple => true, :size => 5 } %> 
+      <h5 class="card-title">Escoja Categoria que desea</h5>
+      <div class="form-group ">
+        <%= form.label :category_id, 'Seleccionar máximo 5 Categorias' %>
+        <%= form.select( :category_id, options_for_select(@categories), { prompt: 'Seleccione categoría', require: true},  {:multiple => true, :size => 5, class: 'form-control col-10'} ) %> 
       </div> 
     </div>
   </div>
@@ -55,7 +55,7 @@
   <div class="actions">
     <%= form.submit 'Enviar', class: 'btn btn-outline-success col-4' %>
     <span class=" col-4"></span>
-    <%= link_to 'Volver', products_path, class: 'btn btn-outline-primary col-4' %>
+    <%= link_to 'Volver', products_path, class: 'btn btn-outline-primary col-4 float-right' %>
   </div>
 <% end %>
 

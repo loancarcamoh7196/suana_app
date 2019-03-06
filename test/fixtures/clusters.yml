@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  references: MyString
   product: one
   category: one
 
 two:
+  references: MyString
   product: two
   category: two
