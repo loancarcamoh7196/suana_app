@@ -8,12 +8,14 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.vendor?
-      can :manage, [Product, Detail]
+      can :manage, [Product, Detail, Category]
     elsif user.user?
-      can [:index, :show], [Detail]
-        
+      can [:index, :show], [Detail, Category]
+      can [:edit, :update, :destroy], Comment, user_id: user.id
+      can [:create, :cart, :remove_one_item, :destroy, :buy, :bought_products, :empty_cart], Order
+      can [:index, :create, :destroy], Wishlist
     else
-      can [:index, :show], [Detail]
+      can [:index, :show], [Detail, Category]
     end
     #
     # The first argument to `can` is the action you are giving the user

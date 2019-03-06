@@ -2,7 +2,7 @@ class WishlistsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @wishlists = Wishlist.where(user: current_user)
+    @wishlists = current_user.wishlists
   end
   
   def create
@@ -32,10 +32,5 @@ class WishlistsController < ApplicationController
         format.html{ redirect_to root_path }
       end
     end
-  end
-  
-  
-  def index
-      @wishlists = current_user.wishlists
   end
 end

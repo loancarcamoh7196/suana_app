@@ -1,3 +1,3 @@
 class Brand < ApplicationRecord
-    has_many :details
+  has_many :details
 end

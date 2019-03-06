@@ -1,4 +1,5 @@
 class BillingsController < ApplicationController
+  
   def pre_pay
     orders = current_user.cart
     total = orders.get_total

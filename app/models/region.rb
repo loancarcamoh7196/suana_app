@@ -1,3 +1,3 @@
 class Region < ApplicationRecord
-    has_many :townships, dependent: :delete_all
+  has_many :townships, dependent: :delete_all
 end

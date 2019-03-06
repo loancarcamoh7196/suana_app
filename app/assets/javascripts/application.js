@@ -20,6 +20,6 @@
 //= require owl.carousel.min
 //= require jquery.nicescroll.min
 //= require jquery.zoom.min
-// require jquery-ui.min
+//= require jquery-ui.min
 //= require main
 // require_tree .

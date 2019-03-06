@@ -22,8 +22,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  
-    
+
   def cart
     
     @orders = current_user.cart.order(:id)
@@ -54,7 +53,7 @@ class OrdersController < ApplicationController
   end
   
   def bought_products
-    @orders = current_user.orders.where(paid:true)
+    @orders = current_user.orders.where(paided: true)
   end
   
   def empty_cart
