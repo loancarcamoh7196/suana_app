@@ -11,5 +11,15 @@ ActiveAdmin.register Detail do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :unique_identifider, :brand_id, :quantity, :available, :is_reserved, :price, :chapter
 
+  index do
+    column :unique_identifider
+    column :chapter
+    column :product_id
+    column :quantity
+    column :is_reserved
+
+    actions
+  end
 end

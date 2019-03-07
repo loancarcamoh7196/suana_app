@@ -18,5 +18,7 @@ ActiveAdmin.register Suggestion do
     column :type_s
     column :author_id
     column :revised
+    
+    actions
   end
 end

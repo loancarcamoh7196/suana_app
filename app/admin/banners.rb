@@ -23,8 +23,6 @@ ActiveAdmin.register Banner do
 		
 		column :created_at
 
-		
-		
 		actions
 	end
 
