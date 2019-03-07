@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_152738) do
+ActiveRecord::Schema.define(version: 2019_03_07_001722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,18 @@ ActiveRecord::Schema.define(version: 2019_03_06_152738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.text "observation"
+    t.integer "type_s"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "revised", default: false
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
+  end
+
   create_table "townships", force: :cascade do |t|
     t.string "name"
     t.bigint "region_id"
@@ -201,6 +213,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_152738) do
   add_foreign_key "orders", "details"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "authors"
+  add_foreign_key "suggestions", "users"
   add_foreign_key "townships", "regions"
   add_foreign_key "wishlists", "details"
   add_foreign_key "wishlists", "users"

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  
   devise_for :users
   resources :deliveries
   resources :brands
   resources :categories
-  
+  resources :suggestions, only: %i[index new create edit upgrade]
   resources :products do
     resources :details, only: %i[create destroy edit update]
   end
