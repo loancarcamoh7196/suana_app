@@ -67,3 +67,4 @@ gem 'image_processing'
 gem 'paypal-sdk-rest'
 gem 'cancancan'
 gem 'activeadmin' 
+

@@ -28,7 +28,6 @@ Rails.application.routes.draw do
       get 'cart'
       delete 'empty_cart'
       post 'buy'
-      
     end
   end
 
@@ -46,7 +45,6 @@ Rails.application.routes.draw do
   resources :authors
   resources :banners
   
-  get 'bought_products', to: 'orders#bought_products', as: 'bought_products'
 
   root 'details#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
