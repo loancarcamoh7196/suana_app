@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3> Tu historial de compras </h3>
+      
+      <br>
+      <hr>
+    
+      <% if @orders.present? %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>U. Price</th>
+              <th>Total</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.id %></td>
+                <td><%= order.product.id %></td>
+                <td><%= order.product.name %></td>
+                <td><%= order.quantity %></td>
+                <td><%= order.price %></td>
+                <td><%= order.price * order.quantity %></td>
+                <td><%= time_ago_in_words(order.billing.created_at) %> ago.. (<%= order.billing.created_at.strftime('%d/%m/%Y') %>)</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+          <p>No se han encontrados resultados.</p>
+      <% end %>
+    </div>    
+  </div>
+</div>

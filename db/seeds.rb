@@ -1159,85 +1159,71 @@ Author.destroy_all
 
 authors = [
     {
-        id: 1,
         name: 'Kōhei Horikoshi',
         description: 'Kōhei Horikoshi (平 越 耕 平 Horikoshi Kōhei, nacido el 20 de noviembre de 1986) es un artista de manga japonés conocido por crear la serie de manga shōnen Ōmagadoki Dōbutsuen, Barrage, y más recientemente My Hero Academia, todos los cuales están serializados en Weekly Shōnen Jump. Horikoshi se graduó en la Universidad de Artes de Nagoya y nació en la Prefectura de Aichi.  Fue asistente de Yasuki Tanaka, creador y autor de las series de manga Hitomi no Catoblepas y Kagijin.
 
-        Las series de manga favoritas de Horikoshi incluyen Naruto, One Piece, Akira, Tekkonkinkreet y Boys on the Run. Horikoshi también es un ávido fanático de los cómics de superhéroes estadounidenses, particularmente Marvel Comics. ',
-        image: File.open('/home/lorena/Escritorio/Proyecto_Final/Imagenes/authors/kohei_horikoshi_artists_alley.jpg')
+        Las series de manga favoritas de Horikoshi incluyen Naruto, One Piece, Akira, Tekkonkinkreet y Boys on the Run. Horikoshi también es un ávido fanático de los cómics de superhéroes estadounidenses, particularmente Marvel Comics. '
     },{
-        id: 2,
         name: 'Ukyō Kodachi',
         description: 'Ukyō Kodachi (小太刀右京, Kodachi Ukyō) es el encargado de escribir el manga mensual Boruto: Naruto Next Generations, el cual es ilustrado por Mikio Ikemoto y supervisado por Masashi Kishimoto, el creador de la serie. Kodachi también escribió la novela de la Gaara Hiden: Un Espejismo de Tormenta de Arena, la adaptación de la novela ligera de Boruto: Naruto la Película, además colaboró con Kishimoto para escribir el guión de dicha película. '
     },{
-        id: 3,
         name: 'Mikio Ikemoto',
         description: 'Mikio Ikemoto (池本幹雄, Ikemoto Mikio) era el tercer asistente de Masashi Kishimoto durante los quince años de trabajo del manga de Naruto. Durante un spotlight de asistentes incluido en el Volumen 6 del manga, Kishimoto declaró que Ikemoto trabajaba muy bien.
 
         En una entrevista publicada en 2016 en la Weekly Shōnen Jump, Kishimoto reveló que Ikemoto había contribuido al diseño de personajes de la serie, notablemente diseñando muchos de los personajes de fondo así como a Zabuza Momochi, Haku y el atuendo de batalla de Hiruzen Sarutobi. Cabe señalar que Ikemoto se encarga de ilustrar el manga mensual Boruto: Naruto Next Generations, siendo escrito por Ukyō Kodachi y supervisado por Kishimoto. '
     },{
-        id: 4,
         name: 'Yūki Tabata',
         description: 'En 2011, Tabata ingresó en la Golden Future Cup, que le permitió publicar una oportunidad única en la revista Weekly Shōnen Jump como parte de una competencia. Publicó un one-shot llamado Hungry Joker y logró ganar la competencia antes mencionada. Esto dio lugar a que su versión de un solo golpe fuera considerada para ser serializada por la revista. La serialización de Hungry Joker comenzó en noviembre de 2012 en la edición No 50 de la revista. La serie recibió varias críticas debido a la gran partida que la serie había tomado del original de un solo disparo. Debido a esto, Hungry Joker no logró popularidad y fue cancelado después de 24 capítulos en mayo de 2013 en el No 24 de la revista.
         
         Un año después, Tabata publicó un nuevo one-shot en el 2do Número de 2014 de la revista Jump NEXT, llamado Black Clover. El one-shot fue considerado una vez más para la serialización de Weekly Shōnen Jump y comenzó la serialización en febrero de 2015 en el No 12 de la revista. Para su segunda serialización, Tabata decidió tomar una inspiración mucho más cercana del original de una oportunidad donde el diseño de los personajes principales y las personalidades, junto con los ajustes fundamentales, se llevaron a cabo en la serie. A partir del 12 de mayo de 2018, la serie ha publicado 183 capítulos y todavía está en curso. '
     },{
-        id: 5,
         name: 'Naotaka Hayashi',
         description: ''
     },{
-        id: 6,
         name: 'Atsushi Nishigori',
         description: ''
     },{
-        id: 7,
         name: 'Eiichirō Oda',
         description: '尾田栄一郎 Oda Eiichirō es un mangaka nacido el 1 de enero de 1975 en la prefectura de Kumamoto. Conocido por su serie de manga One Piece (1997-presente) cuya obra es la más vendida de todos los tiempos con más de 450 millones de copias en circulación en todo el mundo y la única en la historia en conseguir un récord Guinness al ser el manga más vendido de todos los tiempos. '
     },{
-        id: 8,
         name: 'Kōsuke Hamada',
         description: ''
     },{
-        id: 9,
         name: 'Akira Toriyama',
         description: '鳥山 明 Toriyama Akira, Nagoya, 5 de abril de 1955) es un mangaka y diseñador artístico japonés. Es conocido mundialmente por sus obras Dr. Slump y Dragon Ball, y por el diseño de personajes de las franquicias Dragon Quest, Chrono Trigger y Blue Dragon. '
     },{
-        id: 10,
         name: 'Chikara Sakuma',
         description: ''
     },{
-        id: 11,
         name: 'Masashi Kishimoto',
         description: '岸本斉史 Kishimoto Masashi (Nagi, 8 de noviembre de 1974)1​ es un popular dibujante de manga conocido por ser el autor de la serie Naruto, comenzada en 1999, dibujando únicamente el manga de esta serie. Es el hermano gemelo mayor de Seishi Kishimoto. '
     },{
-        id: 12,
         name: 'Haruichi Furudate',
         description: ''
     },{
-        id: 13,
         name: 'One',
         description: ''
     },{
-        id: 14,
         name: 'Yusuke Murata',
         description: ''
     },{
-        id: 15,
         name: 'Nakaba Suzuki',
         description: ''
     },{
-        id: 16,
         name: 'Albert Monteys',
         description: ''
     },{
-        id: 17,
         name: 'Isaac Sánchez',
         description: ''
     },{
-        id: 18,
         name: 'Fernando de Peña',
         description: ''
-    }
+    },
+    { name: 'George Abe' },
+    { name: 'abec' },
+    { name: 'Abi Umeda' },
+    { name: 'Adachitoka ' },
+    { name: '' },
 ]
 
 authors.each do |a|
@@ -1395,4 +1381,4 @@ categories.each do |c|
         description: c[:description],
     )
 end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

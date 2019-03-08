@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def create
     @detail = Detail.find(params[:detail_id])
     @order = current_user.orders.where(detail_id: @detail.id, paided: false).first
