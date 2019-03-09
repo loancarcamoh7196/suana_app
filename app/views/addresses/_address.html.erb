@@ -1,0 +1,7 @@
+<tr id="<%= address.id %>">
+  <td><%= address.street %> <%= address.number_street %></td>
+  <td><%= address.building_type %></td>
+  <td><%= address.township.name %></td>
+  <td><%= address.township.region.name %></td>
+  <td><%= link_to '<i class="fas fa-times"></i>'.html_safe, address_path(address), remote: true, method: :delete, class: 'btn-outline-danger', title: '¿Eliminar dirección?',data:{ confirm:'¿Estas seguro?' }  %></td>
+</tr>

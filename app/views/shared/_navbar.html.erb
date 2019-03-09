@@ -15,52 +15,58 @@
 						</a>
 					</div>
 					
-					<% if user_signed_in? %>
-            <div class="col-xl-6 col-lg-6">
-              <%# <form class="header-search-form">
-                <input type="text" placeholder="Search on divisima ....">
-                <button><i class="flaticon-search"></i></button>
-              </form> %>
-              
-            </div>	
-					<% else %>
-            <div class="col-xl-8 col-lg-6">
-              <%# <form class="header-search-form">
-                <input type="text" placeholder="Search on divisima ....">
-                <button><i class="flaticon-search"></i></button>
-              </form> %>
-              
-            </div>
-					<% end %>
+					
 
 					<% if user_signed_in? %>
-					<div class="col-xl-5 col-lg-3">
-						<div class="user-panel">
-							<div class="up-item">
-								<div class="shopping-card">
-									<i class="flaticon-bag"></i>
-									<span id="count-cart"><%= current_user.cart.total_items %></span>
+					<div class="col-xl-11 col-10 col-lg-10 col-sm-12 ">
+						<div class="user-panel ">
+
+							<div class="float-right">
+								<%# Opción de Bolsa de Compra %>
+								<div class="up-item">
+									<div class="shopping-card ">
+										<i class="flaticon-bag"></i>
+										<span id="count-cart" ><%= current_user.cart.total_items %></span>
+									</div>
+									<a href="<%= cart_orders_path %>">Bolsa de Compra</a>
 								</div>
-								<a href="<%= cart_orders_path %>">Bolsa de Compra</a>
-							</div>
-							<div class="up-item">
-								<p class=""><%= current_user.name %></p>
-								<br>
-								<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>   	
-								<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
-					<% else %>
-					<div class="col-xl-3 col-lg-4">
-						<div class="user-panel">
-							<div class="up-item cart-link">
-								<div style="float:left !important;">
-									<i class="flaticon-profile"></i>
-									<a href="<%= new_user_session_path %>" >Inicia sesión</a>  o  <a href="<%= new_user_registration_path %>" >Registrate</a>
+							
+								<div class="up-item">
+									<div class="shopping-card ">
+										<i class="fas fa-coins"></i>
+										<span id="count-cart"><%= current_user.points %></span>
+									</div>
+									<a href="<%= cart_orders_path %>">BunnyCoins</a>
 								</div>
-					<% end %>
+
+							
+
+								<div class="up-item">
+									<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
+									<div class="shopping-card ">
+										<a class=""><%= current_user.name %></a>
+										<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
+									</div>   	
+									
+								</div>
 							</div>
 							
 						</div>
 					</div>
+					<% else %>
+					<div class="col-xl-12 col-lg-4">
+						<div class="user-panel">
+							<div class="up-item cart-link">
+								<div style="float:right !important;">
+									<i class="flaticon-profile"></i>
+									<a href="<%= new_user_session_path %>" >Inicia sesión</a>  o  <a href="<%= new_user_registration_path %>" >Registrate</a>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<% end %>
+							
 				</div>
 			</div>
 		</div>

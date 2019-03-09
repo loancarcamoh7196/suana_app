@@ -73,7 +73,7 @@ class DetailsController < ApplicationController
   
   def update
     @product = Product.find(params[:product_id])
-   
+    
     respond_to do |format|
       if @detail.update(detail_params)
         format.js
@@ -88,7 +88,11 @@ class DetailsController < ApplicationController
     @details = data_for_category(params[:name])
     respond_to :js
   end
-  
+
+  def list_gift
+    @details = data_for_gifts
+    respond_to :js
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -103,14 +107,20 @@ class DetailsController < ApplicationController
     if cluster != nil
       details_for_cluster = Detail.where(product_id: cluster.product_id)
     else
-      details_for_cluster = Detail.where('1 =2')
+      details_for_cluster = Detail.where('1 = 2')
     end
-    
-    return details_for_cluster
+    details_for_cluster
+  end
+
+  private
+  def data_for_gifts
+    details = Detail.joins("INNER JOIN products ON products.id = details.product_id AND is_gift = true")
+
+    details!=nil ?  details : Detail.where('1 = 2')
   end
 
   private
   def detail_params
     params.require(:detail).permit(:unique_identifider, :brand_id, :quantity, :is_reserved, :available, :price, :product_id, :chapter)
-  end    
+  end
 end

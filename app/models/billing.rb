@@ -1,6 +1,7 @@
 class Billing < ApplicationRecord
 	belongs_to :user
-	has_many :orders, optional: true
+	has_many :orders
+
   def self.init_payment(items, total)
     PayPal::SDK::REST::Payment.new({
 			intent: "sale",

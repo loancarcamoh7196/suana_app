@@ -1,0 +1,5 @@
+<% if @wishlists.present? %>
+  $('#cuerpo-seccion').html('<%= j render 'wishlist', wishlist: @wishlists %>');
+<% else %>
+  $('#cuerpo-seccion').html('<p> No tienes productos en tu lista. </p>');
+<% end %>

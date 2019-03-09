@@ -1,0 +1,31 @@
+<%= form_with(model: address) do |f| %>
+  <div class="form-group">
+    <%= f.label :street , 'Nombre de calle, avenida o pasaje'%>
+    <%= f.text_field :street, class: 'form-control', require: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number_street, 'Número de calle' %>
+    <%= f.text_field :number_street, class: 'form-control', require: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :building_type, 'Casa o Departamento' %>
+    <%= f.select(:building_type,[['Casa', 0], ['Departamento', 1]],{ prompt: 'Selecciona una opción' }, {  required: true, class: 'form-control'}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :township_id, 'Comuna'%>
+    <%= f.select :township_id, options_for_select(@townships), { require: true},class: 'form-control'  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :zip_code, 'Codigo Postal' %>
+    <%= f.text_field :zip_code, class: 'form-control', require: true %>
+  </div>
+
+  <br><br>
+  <div class="actions">
+    <%= f.submit 'Enviar', class: 'btn btn-outline-success ' %>
+  </div>
+<% end %>

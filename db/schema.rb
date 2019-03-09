@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_173947) do
+ActiveRecord::Schema.define(version: 2019_03_09_160259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2019_03_07_173947) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "number_street"
+    t.integer "building_type"
+    t.string "zip_code"
+    t.bigint "township_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["township_id"], name: "index_addresses_on_township_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -212,6 +225,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_173947) do
     t.integer "role", default: 0
     t.string "phone_number"
     t.integer "phone_type", default: 0
+    t.integer "points", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -226,6 +240,8 @@ ActiveRecord::Schema.define(version: 2019_03_07_173947) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "townships"
+  add_foreign_key "addresses", "users"
   add_foreign_key "billings", "users"
   add_foreign_key "clusters", "categories"
   add_foreign_key "clusters", "products"

@@ -1,4 +1,5 @@
 class BillingsController < ApplicationController
+  before_action :authenticate_user!
   
   def pre_pay
     orders = current_user.cart
@@ -6,7 +7,7 @@ class BillingsController < ApplicationController
     items = orders.to_paypal_items
     
     payment = Billing.init_payment(items, total)
-    byebug
+    
     if payment.create
       #@payment.id
       redirect_url = payment.links.find{ |v| v.method == 'REDIRECT' }.href
@@ -36,9 +37,12 @@ class BillingsController < ApplicationController
       #Actualiza monto disponible  
       orders.each do |o|
         Detail.where(id: o.detail.id).update_all(quantity: o.detail.quantity - o.quantity)
+        #Pendiente
+        user = User.find(current_user.id);
+        User.update_all(points: user.points + o.detail.product.point_quantity)
       end
       orders.update_all(paided: true, billing_id: billing.id)
-      flash[:success] = 'El pago se ha realizado con éxito!!! ;)'
+      flash[:success] = 'El pago se ha realizado con éxito. Si deseas ver tu boleta, ve a tu perfil sección Tus compras.<br>Gracias por preferirnos y vuelve pronto '
       redirect_to root_path
     else
       render plain: ':('

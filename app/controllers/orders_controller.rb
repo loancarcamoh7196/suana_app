@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:brought_products]
+  
   def create
     @detail = Detail.find(params[:detail_id])
     @order = current_user.orders.where(detail_id: @detail.id, paided: false).first
@@ -55,6 +56,10 @@ class OrdersController < ApplicationController
   
   def bought_products
     @orders = current_user.orders.where(paided: true)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
   
   def empty_cart

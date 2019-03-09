@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street: MyString
+  number_street: MyString
+  building_type: 1
+  township: one
+  user: one
+
+two:
+  street: MyString
+  number_street: MyString
+  building_type: 1
+  township: two
+  user: two

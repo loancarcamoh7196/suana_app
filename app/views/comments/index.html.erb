@@ -1,15 +1,5 @@
-<%# Products - Index - Solo vendedor y/o admin  %>
 <div class="container">
-
-  <div class="row ">
-    <div class="col-10 col-md-12">
-      <h3>Productos</h3>
-    </div>
-    <div class="col-2 col-md-12">
-      <%= link_to '<i class="fas fa-plus"></i> Nuevo Producto'.html_safe, new_product_path, class: 'btn btn-outline-success float-right btn-sm'  %>
-    </div>
-    <hr>
-    <br><br>
+  <div class="row">
     <div class="col-12">
       <table class="table table-fullwidth table-hover table-responsive">
         <thead>
@@ -31,6 +21,3 @@
     </div>
   </div>
 </div>
-
-<%= render 'modal_product' %>
-

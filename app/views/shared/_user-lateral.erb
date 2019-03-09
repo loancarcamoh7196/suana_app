@@ -1,0 +1,13 @@
+<div class="col-lg-3  ">
+	<%# Filtro por Categoria %>
+	<div class="filter-widget">
+		<h2 class="fw-title">Menú de Usuario </h2>
+			<ul class="category-menu">			
+				<li><%= link_to 'Mi perfil', profiles_path, remote: true %> </li>
+				<li><%= link_to 'Mi dirección', address_profiles_path, remote: true %> </li>
+				<li><%= link_to 'Mis compras', '#', remote: true %></li>
+				<li><%= link_to 'Mi lista de deseos', wishlists_path, remote: true %></li>
+			</ul>
+	</div>
+</div>
+

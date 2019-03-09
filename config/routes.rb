@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  
+  resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
+  resources :profiles, only: [:index] do
+    collection do
+      get 'address', to: 'profiles#address', as: 'address'
+    end
+  end
+
   resources :deliveries
   resources :brands
   resources :categories
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[new create edit update destroy]
     collection do
       get 'view_for_category/:name', to: 'details#view_for_category', as: 'search_category'
+      get 'list_gift', to: 'details#list_gift', as: 'list_gift'
     end
   end
   resources :clusters, only: %i[show]
@@ -37,14 +44,13 @@ Rails.application.routes.draw do
       get 'execute'
     end
   end
-  
+  get 'bought_products', to: 'orders#bought_products', as: 'bought_products'
   get 'pages/index'
   get 'pages/home'
   get 'pages/contact'
   get 'pages/us'
   resources :authors
   resources :banners
-  
 
   root 'details#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,27 @@
+
+<div class="container">
+  <div class="row">
+    <%= render 'shared/user-lateral' %>
+    <div class="col-lg-9" id ="cuerpo-seccion">
+      <%= link_to '<i class="fas fa-plus"></i> Agregar dirección'.html_safe, new_address_path, remote: true, class: 'btn btn-outline-success float-right' %>
+      <table class="table table-hover" id="list-address" >
+        <thead>
+          <th>Calle</th>
+          <th></th>
+          <th>Comuna</th>
+          <th>Región</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <%= render @addresses %>
+          <% if ! @addresses.present? %>
+            <p id="msj-no-data">No has registrado direcciones para tus envíos</p>
+          <% end %>
+        </tbody>
+      </table>
+      
+      
+    </div>
+  </div>
+</div>
+<%= render 'modal' %>

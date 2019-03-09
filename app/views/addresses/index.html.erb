@@ -1,0 +1,19 @@
+<table class="table table-hover">
+  <thead>
+    <th>Calle</th>
+    <th>Tipo de Construcción</th>
+    <th>Comuna</th>
+    <th>Región</th>
+  </thead>
+  <tbody>
+    <%= addresses.each do |adresss| %>
+      <tr>
+        <td><%= address.street %> <%= address.number_street %></td>
+        <td><%= address.building_type %></td>
+        <td><%= address.township.name %></td>
+        <td><%= address.user.name %></td>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
