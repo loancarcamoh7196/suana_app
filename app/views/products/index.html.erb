@@ -11,23 +11,25 @@
     <hr>
     <br><br>
     <div class="col-12">
-      <table class="table table-fullwidth table-hover table-responsive">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Point quantity</th>
-            
-            <th>Is gift</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+      <div class="table-responsive">
+        <table class="table table-fullwidth table-hover">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Point quantity</th>
+                
+                <th>Is gift</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-        <tbody id="lista">
-          <%= render @products %>
-        </tbody>
-      </table>
+            <tbody id="lista">
+              <%= render @products %>
+            </tbody>
+          </table>
+      </div>
     </div>
   </div>
 </div>

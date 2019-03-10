@@ -4,19 +4,21 @@
       <h2>Categorias</h2>
       <%= link_to '<i class="fas fa-plus"></i>  Agregar Categoria'.html_safe, new_category_path, remote: true, class: 'btn btn-outline-success col-4 col-sm-2 btn-block btn-sm float-right' %>
       <br>
-      <table class="table table-fullwidth" id="table-category">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+      <div class="table-responsive">
+        <table class="table table-fullwidth table-hover" id="table-category">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
 
-        <tbody id="list">
-          <%= render @categories %>
-        </tbody>
-      </table>      
+          <tbody id="list">
+            <%= render @categories %>
+          </tbody>
+        </table>
+      </div>      
     </div>
   </div>
 </div>

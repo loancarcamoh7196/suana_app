@@ -39,8 +39,6 @@
 									<a href="<%= cart_orders_path %>">BunnyCoins</a>
 								</div>
 
-							
-
 								<div class="up-item">
 									<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
 									<div class="shopping-card ">
@@ -71,7 +69,7 @@
 			</div>
 		</div>
 	<div class="sticky-top ">
-        <%# Navbar - menu %>
+    <%# Navbar - menu %>
 		<nav class="main-navbar">
 			<div class="container">
 				
@@ -79,10 +77,7 @@
 					<li> <%= link_to 'Home', root_path, title: 'Nuestras novedades estan aquí' %> </li>
 					<li><a href="#">Comics </a></li>
 					<li><a href="#">Manga</a></li>
-					<li><a href="#">Libros
-
-						<span class="new">New</span>
-					</a></li>
+					<li><a href="#">Libros <span class="new">New</span> </a> </li>
 					<li><a href="#">Revistas</a>
 						<ul class="sub-menu">
 							<li><a href="#">Sneakers</a></li>
@@ -107,7 +102,7 @@
 							<li><%= link_to 'Productos', products_path %></li>
 							<li><%= link_to 'Categorias', categories_path %></li>
 							<li><%= link_to 'Sugerencias y mensajes', suggestions_path %></li>
-							<li><%= link_to 'Comentarios', '#' %></li>
+							<li><%= link_to 'Comentarios', comments_path %></li>
 							<li><a href="./contact.html">Contact Page</a></li>
 						</ul>
 					</li>
