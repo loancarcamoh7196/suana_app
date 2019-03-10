@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @banner.title %>
@@ -15,5 +13,7 @@
   <%= @banner.actived %>
 </p>
 
-<%= link_to 'Edit', edit_banner_path(@banner) %> |
-<%= link_to 'Back', banners_path %>
+<p>
+  <%= image_tag @banner.image %>
+</p>
+

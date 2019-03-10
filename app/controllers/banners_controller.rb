@@ -4,21 +4,22 @@ class BannersController < ApplicationController
   # GET /banners
   # GET /banners.json
   def index
-    @banners = Banner.all
+    @banners = Banner.all.order('id DESC')
   end
 
   # GET /banners/1
-  # GET /banners/1.json
   def show
   end
 
   # GET /banners/new
   def new
     @banner = Banner.new
+    respond_to :js
   end
 
   # GET /banners/1/edit
   def edit
+    respond_to :js
   end
 
   # POST /banners
@@ -28,8 +29,8 @@ class BannersController < ApplicationController
 
     respond_to do |format|
       if @banner.save
-        format.html { redirect_to @banner, notice: 'Banner was successfully created.' }
-        format.json { render :show, status: :created, location: @banner }
+        flash[:success] = 'La nueva entrada para el banner ha sido agregada exitosamente.'
+        format.js
       else
         format.html { render :new }
         format.json { render json: @banner.errors, status: :unprocessable_entity }
@@ -38,12 +39,11 @@ class BannersController < ApplicationController
   end
 
   # PATCH/PUT /banners/1
-  # PATCH/PUT /banners/1.json
   def update
     respond_to do |format|
       if @banner.update(banner_params)
-        format.html { redirect_to @banner, notice: 'Banner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @banner }
+        flash[:success] = 'Ha actualizado entrada del banner.'
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @banner.errors, status: :unprocessable_entity }
@@ -52,12 +52,11 @@ class BannersController < ApplicationController
   end
 
   # DELETE /banners/1
-  # DELETE /banners/1.json
   def destroy
     @banner.destroy
     respond_to do |format|
-      format.html { redirect_to banners_url, notice: 'Banner was successfully destroyed.' }
-      format.json { head :no_content }
+      flash[:danger] = 'Ha eliminado la entrada del banner seleccionada.'
+      format.js
     end
   end
 
@@ -69,6 +68,6 @@ class BannersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def banner_params
-      params.require(:banner).permit(:title, :description, :actived)
+      params.require(:banner).permit(:title, :description, :actived, :image)
     end
 end

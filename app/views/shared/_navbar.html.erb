@@ -15,8 +15,6 @@
 						</a>
 					</div>
 					
-					
-
 					<% if user_signed_in? %>
 					<div class="col-xl-11 col-10 col-lg-10 col-sm-12 ">
 						<div class="user-panel ">
@@ -104,6 +102,7 @@
 							<li><%= link_to 'Sugerencias y mensajes', suggestions_path %></li>
 							<li><%= link_to 'Comentarios', comments_path %></li>
 							<li><%= link_to 'Marcas', brands_path %></li>
+							<li><%= link_to 'Banner', banners_path %></li>
 						</ul>
 					</li>
 					<li><%= link_to 'Sugerencias', new_suggestion_path %></li>

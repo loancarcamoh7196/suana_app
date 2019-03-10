@@ -1,31 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Banners</h2>
+      <%= link_to '<i class="fas fa-plus"></i>    Agregar banner'.html_safe, new_banner_path, remote: true, class: 'btn btn-sm btn-outline-success btn-block col-3 float-right' %>
+      <br>
+      <div class="table-responsive">
+        <table class="table table-hover table-fullwidth">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Esta activo?</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<h1>Banners</h1>
+          <tbody id="list">
+            <%= render @banners %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Actived</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @banners.each do |banner| %>
-      <tr>
-        <td><%= banner.title %></td>
-        <td><%= banner.description %></td>
-        <td><%= banner.actived %></td>
-        <td><%= link_to 'Show', banner %></td>
-        <td><%= link_to 'Edit', edit_banner_path(banner) %></td>
-        <td><%= link_to 'Destroy', banner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Banner', new_banner_path %>
+<%= render 'modal' %>

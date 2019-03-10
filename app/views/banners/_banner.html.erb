@@ -1,0 +1,10 @@
+<tr id="<%= banner.id %>">
+  <td><%= banner.id %></td>
+  <td><%= banner.title %></td>
+  <td><%= banner.description %></td>
+  <td><%= banner.actived ? '<span class="badge badge-success">Activo</span>'.html_safe : '<span class="badge badge-danger">Desactivado</span>'.html_safe %></td>
+  
+  <td><%= link_to '<i class="fas fa-info"></i>'.html_safe, banner, remote: true, class: 'btn btn-sm btn-outline-info', title: "Detalle de #{banner.id}"  %></td>
+  <td><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_banner_path(banner), remote: true, class: 'btn btn-sm btn-outline-warning', title: "Editar #{banner.title}" %></td>
+  <td><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, banner, remote: true, method: :delete, data: { confirm: '¿Estas seguro?' }, class:'btn btn-sm btn-outline-danger' %></td>
+</tr>
