@@ -1,23 +1,67 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <table class="table table-fullwidth table-hover table-responsive">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Point quantity</th>
-            
-            <th>Is gift</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+      <h2>Comentarios</h2>
+      <div class="input-group mb-3">
+        <div class="header-search-form">
+          <input type="text" name="buscador" id="buscador" class="form-control" placeholder=" Ingrese palabras que desea buscar en los comentarios">
+          <button><i class="flaticon-search"></i></button>                    
+        </div>
+        <div class="text-muted text-center">Recuerde que el buscador es sensible a Mayúsculas</div>
+      </div>  
 
-        <tbody id="lista">
-          <%= render @products %>
-        </tbody>
-      </table>
+
+      <div class="table-responsive">
+        <table class="table table-fullwidth table-hover ">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Comentario</th>
+              <th>Esta baneado?</th>
+              <th>Usuario</th>
+              <th>Publicación</th>
+              <th>Fecha</th>      
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody id="lista">
+            <% @comments.each do |comment| %>
+              <tr id="<%= comment.id%>">
+                <td><%= comment.id %></td>
+                <td><%= comment.description %></td>
+                <td>
+                  <%= comment.banned ? '<span class="badge badge-pill badge-danger">Banneado</span>'.html_safe : '<span class="badge badge-pill badge-success">No banneado</span>'.html_safe %>
+                </td>
+                <td><%= "#{comment.user.email} <br> #{comment.user.name}".html_safe %></td>
+                <td><%= "#{comment.detail.product.title} <br> Capítulo #{comment.detail.chapter}".html_safe %></td>
+                <td><%= time_ago_in_words(comment.created_at) %></td>
+                <td>
+                  
+                  <% if comment.banned %>
+                    <%= link_to '<i class="fas fa-ban"></i>'.html_safe, '#', remote:true, method: :post, class: 'btn btn-sm btn-secondary' %>
+                  <% else %>
+                    <%= link_to '<i class="fas fa-ban"></i>'.html_safe, comment_banned_path(comment), remote:true, method: :post, class: 'btn btn-sm btn-danger' %>
+                  <% end %>
+                  
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<%# Scritp buscador %>
+<script>
+  $('#buscador').keyup(function () {
+    var searchQuery = $('#buscador').val();
+    $.ajax({
+      type: "GET",
+      url: "<%= details_path %>",
+      data: { buscador: searchQuery }
+    });
+  });
+</script>

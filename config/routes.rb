@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       get 'list_gift', to: 'details#list_gift', as: 'list_gift'
     end
   end
+  resources :comments, only: :index do
+    post 'banned', to: 'comments#banned'
+  end
   resources :clusters, only: %i[show]
   resources :wishlists, only: :index
 

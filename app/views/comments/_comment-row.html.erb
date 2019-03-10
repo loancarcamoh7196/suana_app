@@ -1,0 +1,17 @@
+<tr id="<%= comment.id %>">
+  <td><%= comment.id %></td>
+  <td><%= comment.description %></td>
+  <td>
+    <%= comment.banned ? '<span class="badge badge-pill badge-danger">Banneado</span>'.html_safe : '<span class="badge badge-pill badge-success">No banneado</span>'.html_safe %>
+  </td>
+  <td><%= "#{comment.user.email} <br> #{comment.user.name}".html_safe %></td>
+  <td><%= "#{comment.detail.product.title} <br> Capítulo #{comment.detail.chapter}".html_safe %></td>
+  <td><%= time_ago_in_words(comment.created_at) %></td>
+  <td>
+    <% if comment.banned %>
+      <%= link_to '<i class="fas fa-ban"></i>'.html_safe, '#', remote:true, method: :post, class: 'btn btn-sm btn-secondary' %>
+    <% else %>
+      <%= link_to '<i class="fas fa-ban"></i>'.html_safe, comment_banned_path(comment), remote:true, method: :post, class: 'btn btn-sm btn-danger' %>
+    <% end %>
+  </td>
+</tr>

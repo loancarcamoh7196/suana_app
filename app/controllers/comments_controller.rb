@@ -1,6 +1,23 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit update destroy]
 
+  def index
+    respond_to do |format|
+      if !params[:buscador].nil?
+        if params[:buscador].blank?
+          @comments = Comment.all.order('id DESC')
+        elsif params[:buscador].length >= 1
+          # @comments = Detail.where('product.title LIKE ?', "%#{params[:buscador]}%")
+          @comments = Comment.where('description LIKE ?', "%#{params[:buscador]}%").order('id DESC')
+        end
+        format.js
+      else
+        @comments = Comment.all.order('id DESC')
+        format.html
+      end
+    end
+  end
+  
   def new
     @detail = Detail.find(params[:detail_id])
     @comment = Comment.new
@@ -57,7 +74,22 @@ class CommentsController < ApplicationController
       end 
     end
   end
-    
+
+  def banned
+    byebug
+    @comment = Comment.find(params[:comment_id])
+    @comment.banned = true
+    respond_to do |format|
+      if @comment.update(@comment.attributes)
+        format.js
+      else
+        flash[:danger] = 'Error. Intente bannnear más tarde, nuevamente. '
+        format.html { comments_path }
+      end
+    end
+  end
+
+  private
   def comment_params
     params.require(:comment).permit(:description, :banned, :user_id)
   end

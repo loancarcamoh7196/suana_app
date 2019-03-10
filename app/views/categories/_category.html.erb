@@ -1,0 +1,6 @@
+<tr id="<%= category.id %>">
+  <td><%= category.name %></td>
+  <td><%= category.description %></td>
+  <td><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_category_path(category), remote: true, class: 'btn btn-sm btn-outline-warning', title: "Editar #{category.name}" %></td>
+  <td><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, category, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger', title: "Eliminar #{category.name}" %></td>
+</tr>
