@@ -121,6 +121,6 @@ class DetailsController < ApplicationController
 
   private
   def detail_params
-    params.require(:detail).permit(:unique_identifider, :brand_id, :quantity, :is_reserved, :available, :price, :product_id, :chapter)
+    params.require(:detail).permit(:unique_identifider, :brand_id, :quantity, :is_reserved, :available, :price, :product_id, :chapter, images: [])
   end
 end

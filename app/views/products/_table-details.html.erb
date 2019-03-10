@@ -2,55 +2,57 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">
-        Detalles de producto <span class="badge badge-pill badge-info"><%= "#{@product.title}".html_safe %></span>
+      Detalles de producto <span class="badge badge-pill badge-info"><%= "#{@product.title}".html_safe %></span>
     </h5>
-      <% if @product.details.present? %>
-  
+    <% if @product.details.present? %>
+    <div class="table-responsive">
       <table class="table table-hover table-sm ">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Unique ID</th>
-                  <th>Capitulo </th>
-                  <th>Marca o Editorial</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th>Reserva?</th>
-                  <th>Disponible?</th>
-                  <th colspan="2"></th>
-              </tr>
-          </thead>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Unique ID</th>
+            <th>Capitulo </th>
+            <th>Marca o Editorial</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Reserva?</th>
+            <th>Disponible?</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
 
-          <tbody>
-              <% @list_detail.each do |lt| %>
-                <tr id="<%= lt.id %>">
-                  <td><%= lt.id %></td>
-                  <td><%= lt.unique_identifider %></td>
-                  <td><%= lt.chapter.present? ? lt.chapter : '<em> N/A </em>'.html_safe %></td>
-                  <td><%= lt.brand.name %></td>
-                  <td><%= lt.price %></td>
-                  <td><%= lt.quantity %></td>
-                  <td>
-                      <%= lt.is_reserved ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
-                  </td>
-                  <td>
-                      <%= lt.available ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
-                  </td>
-                  <td>
-                      <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_detail_path(@product,lt), class: 'btn-outline-warning btn-sm', title: "Editar #{lt.unique_identifider}", remote: true %>
-                  </td>
-                  <td>
-                      <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,lt), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{lt.unique_identifider}" %>
-                  </td>
-                    
-                </tr>
-              <% end %>
-              
-          </tbody>
+        <tbody id="list">
+          <% @list_detail.each do |lt| %>
+            <tr id="<%= lt.id %>">
+              <td><%= lt.id %></td>
+              <td><%= lt.unique_identifider %></td>
+              <td><%= lt.chapter.present? ? lt.chapter : '<em> N/A </em>'.html_safe %></td>
+              <td><%= lt.brand.name %></td>
+              <td><%= lt.price %></td>
+              <td><%= lt.quantity %></td>
+              <td>
+                <%= lt.is_reserved ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
+              </td>
+              <td>
+                <%= lt.available ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
+              </td>
+              <td>
+                <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_detail_path(@product,lt), class: 'btn-outline-warning btn-sm', title: "Editar #{lt.unique_identifider}", remote: true %>
+              </td>
+              <td>
+                <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,lt), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{lt.unique_identifider}" %>
+              </td>
+                
+            </tr>
+          <% end %>
+            
+        </tbody>
       </table>
+    </div>
+    
   
-      <% else %>
-          <em>No se ha encontrado registros</em>
-      <% end %>
+    <% else %>
+      <em>No se ha encontrado registros</em>
+    <% end %>
   </div>
 </div>

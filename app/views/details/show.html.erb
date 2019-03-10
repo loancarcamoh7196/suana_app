@@ -6,9 +6,9 @@
       <div class="row">
         <div class="col-6 ">
           <%# Imagen del producto %>
-          <%# @product.images.each do |i|  %>
-              <%#= image_tag i.variant(resize: '350x350'), class: 'img-fluid'%>
-          <%# end %>
+          <% @detail.images.each do |i|  %>
+              <%= image_tag i.variant(resize: '350x350'), class: 'img-fluid'%>
+          <% end %>
         </div>    
           
         <div class="col-6">
@@ -20,6 +20,7 @@
             <p><%= "#{@detail.chapter}".html_safe %></p>
             <p><%= "#{@detail.product.description}".html_safe %></p>
             <p><%= @detail.product.author.name %></p>
+            <p><%= "Precio: $#{@detail.price}" %></p>
             <p>
                 Disponible: <span id="cantidad" value="<%= @detail.quantity %>"><%= @detail.quantity %></span>
                 
@@ -64,3 +65,12 @@
 </div>
 
 <%= render 'comments/modal' %>
+
+
+
+
+
+<hr>
+
+
+
