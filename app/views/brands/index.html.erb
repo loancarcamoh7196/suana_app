@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Editoriales y Marcas</h2>
+      <%= link_to '<i class="fas fa-plus"></i>  Nueva Marca'.html_safe, new_brand_path, remote:true, class: 'btn btn-sm btn-outline-success col-3 btn-block float-right' %>
+      <br>
+      <div class="table-responsive">
+        <table class="table table-fullwidth table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<h1>Brands</h1>
+          <tbody id="list">
+            <%= render @brands %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @brands.each do |brand| %>
-      <tr>
-        <td><%= brand.id %></td>
-        <td><%= brand.name %></td>
-        <td><%= link_to 'Show', brand %></td>
-        <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-        <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Brand', new_brand_path %>
+<%= render 'modal' %>

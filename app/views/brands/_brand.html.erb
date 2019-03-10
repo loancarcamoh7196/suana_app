@@ -1,0 +1,6 @@
+<tr id="<%= brand.id %>">
+  <td><%= brand.id %></td>
+  <td><%= brand.name %></td>
+  <td><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_brand_path(brand), remote: true, class: 'btn btn-sm btn-outline-warning', title: "Editar #{brand.name}" %></td>
+  <td><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, brand, method: :delete, data: { confirm: '¿Estas seguro?' }, remote: true, class: 'btn btn-sm btn-outline-danger', title: "Editar #{brand.name}"  %></td>
+</tr>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :deliveries
-  resources :brands
+  resources :brands, only: %i[index new create edit update destroy]
   resources :categories
   resources :suggestions, only: %i[index new create edit upgrade]
   resources :products do
