@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <h3>Buzón de Sugerencias</h3>
+				<%= link_to 'Volver donde estaba'.html_safe, :back , class: 'btn btn-sm btn-outline-warning float-right', title: 'Descuida,todos nos perdemos alguna vez.'
+				 %>
+				 <br>
+				 <div id="msj-error"></div>
+				<hr>
+    </div>
+		<br>
+		<br>
+		<br>
+    <div class="col-sm 12 col-md-4 col-xl-6">
+        
+      <p>
+        Esta sección es para recopilarar información sobre que desea nuestros clientes.
+			</p>
+			<p> 
+				Recuerda que nuestros pedidos, se van adaptando a las preferencias de ustedes, nuestros clientes.
+        Si deseas que un manga por preventa, se traído pidelo aquí, o si necesitas traer un manga, comic, libro en especifico, puedes hacerlo  desde este lugar, solo seleccion la opción pedido especial.
+      </p>
+			<p>  
+        Por favor, sintiente con la libertad de pedir lo que quieras (claro nada que transgreda las reglas antes propuestas, sino las has leído y quieres saber más <%= link_to 'pincha aquí' %>).
+      </p>
+			<p>  
+				Por motivos de contacto y mejor manejo de tu pedido y/o sugerencias, es necesario que te encuentres registrado. Hazlo en link, que se encuentra en la parte superior derecha
+      </p>
+    </div>
+    <div class="col-sm-12 col-md-8 col-xl-6">
+      <div class="card">
+				<div class="card-body">
+					<%= render 'form', suggestion: @suggestion %>
+				</div>
+			</div>
+    </div>
+  </div>  
+</div>
+
+
+<%= link_to 'Back', suggestions_path %>
