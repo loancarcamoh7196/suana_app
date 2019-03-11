@@ -61,4 +61,20 @@ class BillingsController < ApplicationController
       format.html
     end
   end
+
+  def show
+    @billing = Billing.find(params[:id])
+    @orders = current_user.orders.where(paided: true, billing_id: params[:id])
+    @total = @orders.inject(0){|sum, order| sum += order.price.to_i * order.quantity }
+    @count = @orders.inject(0){|sum, order| sum +=  order.quantity }
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "billing #{@billing.code}",
+        template: "billings/show.html.erb",
+        layout: 'pdf.html'
+      end
+    end
+  end
 end

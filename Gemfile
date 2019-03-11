@@ -66,5 +66,7 @@ gem 'devise'
 gem 'image_processing'
 gem 'paypal-sdk-rest'
 gem 'cancancan'
-gem 'activeadmin' 
+gem 'activeadmin'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary' 
 

@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
 
 
   def cart
-    
     @orders = current_user.cart.order(:id)
     #@total = @orders.map{|order| order.detail.price}.sum
     @total = @orders.inject(0){|sum, order| sum += order.price.to_i * order.quantity }

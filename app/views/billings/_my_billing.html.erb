@@ -15,7 +15,7 @@
           <td> <%= billing.amount %></td>
           <td> <%= billing.currency %> </td>
           <td> <%= link_to 'Detalle', detail_billing_path(billing), method: :post, remote:true %> </td>
-          <td> <%= link_to 'Boleta' %> </td>
+          <td> <%= link_to 'Boleta', billing_path(billing,format: :pdf ), download: true  %> </td>
         </tr>
       <% end %>
       <% if ! @billings.present? %>
