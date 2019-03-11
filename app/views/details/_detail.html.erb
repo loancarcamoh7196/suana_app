@@ -1,13 +1,15 @@
 <div class=" card col-lg-4 col-sm-6 ">
   <div class="card-body">    
     <figure>
-      <%# if detail.product.images.attached? %>
-          <%# Product.get_product(detail.product.id).images.each do |image|  %>
-              <%#= image_tag image.variant(resize: '150x150') %>
-          <%# end %>  
-      <%# else %>
-      <i class="fas fa-shopping-bag fa-8x"></i>
-      <%# end %>
+      <% if detail.images.attached? %>
+        <% detail.images.each do |image|  %>
+          <% if detail.images.index(image) == 0 %>
+            <%= image_tag image.variant(resize: '300x300') %>
+          <% end %>
+        <% end %>  
+      <% else %>
+        <i class="fas fa-shopping-bag fa-8x"></i>
+      <% end %>
     </figure>
     <div class="product-info" id="product-info-<%= detail.id %>">
       <h6><%= detail.product.title.html_safe %></h6>

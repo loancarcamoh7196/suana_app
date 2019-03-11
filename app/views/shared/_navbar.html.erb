@@ -40,7 +40,7 @@
 								<div class="up-item">
 									<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
 									<div class="shopping-card ">
-										<a class=""><%= current_user.name %></a>
+										<a href="<%= profiles_path %>"><%= current_user.name %></a>
 										<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
 									</div>   	
 									

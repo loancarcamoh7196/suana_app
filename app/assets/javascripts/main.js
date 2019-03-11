@@ -218,7 +218,7 @@ $(window).on('turbolinks:load', function() {
 
 	$('.product-pic-zoom').zoom();
 
-	$("#alert").fadeIn("slow").delay(5000).fadeOut("slow");
+	$("#alert").fadeIn("slow").delay(10000).fadeOut("slow");
 });
 
 (function($) {

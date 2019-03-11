@@ -5,7 +5,7 @@
 			<ul class="category-menu">			
 				<li><%= link_to 'Mi perfil', profiles_path, remote: true %> </li>
 				<li><%= link_to 'Mi dirección', address_profiles_path, remote: true %> </li>
-				<li><%= link_to 'Mis compras', '#', remote: true %></li>
+				<li><%= link_to 'Mis compras', my_billings_path, remote: true, method: :post %></li>
 				<li><%= link_to 'Mi lista de deseos', wishlists_path, remote: true %></li>
 			</ul>
 	</div>

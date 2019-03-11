@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table table-hover" id="list-address" >
+    <thead>
+      <th colspan="2">Nombre del Producto</th>
+      <th>Cantidad</th>
+      <th>Valor</th>
+
+    </thead>
+    <tbody>
+      <% @orders.each do |orders|  %>
+        <tr>
+          <td> <%= orders.detail.product.title %> </td>
+          <td> <%= orders.detail.chapter %> </td>
+          <td> <%= orders.quantity %></td>
+          <td> <%= orders.price %> </td>
+        </tr>
+      <% end %>
+      <% if ! @orders.present? %>
+        <p id="msj-no-data">No has registrado direcciones para tus envíos</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>

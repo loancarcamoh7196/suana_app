@@ -48,4 +48,17 @@ class BillingsController < ApplicationController
       render plain: ':('
     end
   end
+
+  def my_billing
+    @billings = Billing.where(user: current_user)
+  end
+
+  def detail_billing
+    @billing = Billing.find(params[:id])
+    @orders = current_user.orders.where(paided: true, billing_id: params[:id])
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
 end
