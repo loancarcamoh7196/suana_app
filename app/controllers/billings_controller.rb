@@ -5,11 +5,13 @@ class BillingsController < ApplicationController
     orders = current_user.cart
     total = orders.get_total
     items = orders.to_paypal_items
-    
+
+    address = Address.find(params[:address_id])
+    orders.update_all(address: address)
+
     payment = Billing.init_payment(items, total)
     
     if payment.create
-      #@payment.id
       redirect_url = payment.links.find{ |v| v.method == 'REDIRECT' }.href
       redirect_to redirect_url
     else
@@ -17,7 +19,7 @@ class BillingsController < ApplicationController
 		end
   end
 
-  def execute
+  def execute 
     paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
     
     if paypal_payment.execute(payer_id: params[:PayerID])
@@ -38,8 +40,8 @@ class BillingsController < ApplicationController
       orders.each do |o|
         Detail.where(id: o.detail.id).update_all(quantity: o.detail.quantity - o.quantity)
         #Pendiente
-        user = User.find(current_user.id);
-        User.update_all(points: user.points + o.detail.product.point_quantity)
+        user = User.find(current_user.id)
+        user.update(points: user.points + o.detail.product.point_quantity)
       end
       orders.update_all(paided: true, billing_id: billing.id)
       flash[:success] = 'El pago se ha realizado con éxito. Si deseas ver tu boleta, ve a tu perfil sección Tus compras.<br>Gracias por preferirnos y vuelve pronto '
@@ -76,5 +78,12 @@ class BillingsController < ApplicationController
         layout: 'pdf.html'
       end
     end
+  end
+
+  # GET /choose_address
+  #Página de selección de dirección de envío
+  def direction
+    #orders = current_user.cart
+    @addresses = Address.where(user: current_user).order('id DESC')
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_160259) do
+ActiveRecord::Schema.define(version: 2019_03_13_164535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,8 @@ ActiveRecord::Schema.define(version: 2019_03_09_160259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "billing_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["billing_id"], name: "index_orders_on_billing_id"
     t.index ["detail_id"], name: "index_orders_on_detail_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -250,6 +252,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_160259) do
   add_foreign_key "deliveries", "billings"
   add_foreign_key "details", "brands"
   add_foreign_key "details", "products"
+  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "billings"
   add_foreign_key "orders", "details"
   add_foreign_key "orders", "users"

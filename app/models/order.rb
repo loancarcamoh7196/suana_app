@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :detail
   belongs_to :billing, optional: true
   belongs_to :user
+  belongs_to :address, optional: true
   
   validates :user_id, presence: true
   

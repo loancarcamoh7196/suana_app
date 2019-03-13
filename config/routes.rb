@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'choose_address', to: 'billings#direction', as: 'choose_address'
   resources :billings, only: [:show] do
     collection do
       post 'pre_pay'
