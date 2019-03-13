@@ -85,5 +85,6 @@ class BillingsController < ApplicationController
   def direction
     #orders = current_user.cart
     @addresses = Address.where(user: current_user).order('id DESC')
+    @count_address = Address.where(user: current_user).orders.count
   end
 end

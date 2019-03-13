@@ -40,7 +40,7 @@ class SuggestionsController < ApplicationController
         format.json { render :show, status: :created, location: @suggestion }
       else
         format.html { render :new }
-        format.json { render json: @suggestion.errors, status: :unprocessable_entity }
+       
       end
     end
   end

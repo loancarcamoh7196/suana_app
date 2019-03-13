@@ -13,9 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-
-
-
 //= require jquery.slicknav.min
 //= require owl.carousel.min
 //= require jquery.nicescroll.min

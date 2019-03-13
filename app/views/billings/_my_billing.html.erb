@@ -5,6 +5,7 @@
       <th>Método de Pago</th>
       <th>Monto</th>
       <th>Moneda</th>
+      <th>Fecha de Compra </th>
       <th colspan="2"></th>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
           <td> <%= billing.payment_method %> </td>
           <td> <%= billing.amount %></td>
           <td> <%= billing.currency %> </td>
+          <td> <%= billing.created_at.strftime("%d/%m/%y %I:%M") %> </td>
           <td> <%= link_to 'Detalle', detail_billing_path(billing), method: :post, remote:true %> </td>
           <td> <%= link_to 'Boleta', billing_path(billing,format: :pdf ), download: true  %> </td>
         </tr>

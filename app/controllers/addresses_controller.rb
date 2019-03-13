@@ -4,7 +4,8 @@ class AddressesController < ApplicationController
 
   # GET /addresses
   def index
-    @addresses = Address.where(user_id: current_user.id)
+    @addresses = Address.where(user_id: current_user.id).order('id DESC')
+    @count_address = Address.where(user: current_user).orders.count
   end
 
   # GET /addresses/1

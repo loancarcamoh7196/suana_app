@@ -60,6 +60,7 @@
           <th colspan="2">Nombre del Producto</th>
           <th>Cantidad</th>
           <th>Valor</th>
+          <th>Enviado a: (Dirección)</th>
 
         </thead>
         <tbody>
@@ -69,11 +70,16 @@
               <td> <%= orders.detail.chapter %> </td>
               <td> <%= orders.quantity %></td>
               <td> <%= orders.price %> </td>
+              
+              <% if @orders.index(orders) == 0 %>
+                <td rowspan="<%= @orders.count %>"> <%= "#{orders.address.street} #{orders.address.number_street}, #{orders.address.township.name} <br> #{orders.address.township.region.name}".html_safe %> </td>
+              <% end %>
+              
             </tr>
           <% end %>
           <tr class="table-active">
             <td colspan="3" class="text-right"><strong>Total</strong></td>
-            <td >$ <span id="total"><%= @total %> </span> </td>
+            <th colspan="2">$ <span id="total"><%= @total %> </span> </th>
           </tr>
           <% if ! @orders.present? %>
             <p id="msj-no-data">No has registrado direcciones para tus envíos</p>

@@ -2,33 +2,35 @@
   <div class="row">
     <%= render 'shared/user-lateral' %>
     <div class="col-lg-9" id ="cuerpo-seccion">
-      <table class="table table-fullwidth table-responsive table-hover">
-        <tbody>
-          <tr>
-            <th>Nombre Completo</th>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th>RUT</th>
-            <td><%= @user.rut %></td>
-          </tr>
-          <tr>
-            <th rowspan="2">Fono</th>
-            <td><%= @user.phone_type %></td>
-          </tr>
-          <tr>
-            <td><%= @user.phone_number %></td>
-          </tr>
-          <tr>
-            <th>Mis bunnyCoins </th>
-            <td><%= @user.points %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-fullwidth table-hover">
+          <tbody>
+            <tr>
+              <th>Nombre Completo</th>
+              <td><%= @user.name %></td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th>RUT</th>
+              <td><%= @user.rut %></td>
+            </tr>
+            <tr>
+              <th rowspan="2">Fono</th>
+              <td><%= @user.phone_type %></td>
+            </tr>
+            <tr>
+              <td><%= @user.phone_number %></td>
+            </tr>
+            <tr>
+              <th>Mis bunnyCoins </th>
+              <td><%= @user.points %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

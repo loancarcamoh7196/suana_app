@@ -2,16 +2,6 @@
       <%= form_with(model: suggestion, local: true) do |form| %>
         <% if suggestion.errors.any? %>
           <div class="alert alert-danger"> Debes registrarte para enviar mensaje</div>
-        <% elsif suggestion.errors.any? || current_user.present? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(suggestion.errors.count, "error") %> prohibited this suggestion from being saved:</h2>
-
-            <ul>
-            <% suggestion.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
         <% end %>
 
         <div class="form-group">
@@ -22,9 +12,9 @@
         <div class="form-group">
           <%= form.label :subject, 'Asunto' %>
           <%= form.text_field :subject, {class: 'form-control', required:true} %>
-          <p class="msg-description-input">
+          <p class="msg-description-input" >
             Por favor se breve <br> En caso que sea:
-            <ul>
+            <ul style="font-size: 0.8 rem; color: gray;">
               <li>Un pedido por preventa, pon el nombre de la publicación deseada. En caso de comics o mangas, ponen el nombre de la publicación original <em>(nombre oficial de su país de origen)</em></li>
               <li>Un pedido especial, pon el nombre de la publicación que deseas. </li>
               <li>Pedido de Información, pon como asunto que tipo de información en especifica necesitas.</li>
