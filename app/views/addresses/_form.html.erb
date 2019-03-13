@@ -11,7 +11,7 @@
 
   <div class="form-group">
     <%= f.label :building_type, 'Casa o Departamento' %>
-    <%= f.select(:building_type,[['Casa', 0], ['Departamento', 1]],{ prompt: 'Selecciona una opción' }, {  required: true, class: 'form-control'}) %>
+    <%= f.select(:building_type,[['Casa', 'casa'], ['Departamento', 'dpto']],{ prompt: 'Selecciona una opción' }, {  required: true, class: 'form-control'}) %>
   </div>
 
   <div class="form-group">

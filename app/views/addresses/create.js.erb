@@ -1,3 +1,9 @@
 $('#msj-no-data').html();
 $('#list-address').append("<%= j render 'address', address: @address %>");
 $('#modal').modal('hide');
+
+var fila = '<div class="card">'+'<div class="card-body">'+'<div class="row">'+'<div class="col-1">'+'<input type="radio" name="address_id" id="address_id_<%= @address.id %>" value="<%= @address.id %>">'+'</div>'+    '<div class="col-11">'+' <h5 class="card-title"><%= "#{@address.street}, #{@address.number_street}" %></h5>'+'<p class="mb-0"><%= "#{@address.township.name}, región #{@address.township.region.name}" %></p>'+'<p class="mb-0"><%= "Tipo de Construcción: #{@address.building_type.capitalize}" %></p>'+'<p class="mb-0"><%= "Codigo postal :#{@address.zip_code}" %></p>'+'</div>'+'</div>'+'</div>'+'</div>'
+
+
+$('#list-direction').prepend(fila);
+$('#modal').modal('hide');

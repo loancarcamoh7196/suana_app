@@ -1,4 +1,4 @@
-class Address < ApplicationRecord
+  class Address < ApplicationRecord
   belongs_to :township
   belongs_to :user
 

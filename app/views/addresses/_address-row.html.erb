@@ -1,0 +1,21 @@
+<% addresses.each do |address| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-1">
+          <%= radio_button_tag 'address_id', address.id %>
+        </div>
+        <div class="col-11">
+          <h5 class="card-title"><%= "#{address.street}, #{address.number_street}" %></h5>
+          
+          <p class="mb-0"><%= "#{address.township.name}, región #{address.township.region.name}" %></p>
+          <p class="mb-0"><%= "Tipo de Construcción: #{address.building_type.capitalize}" %></p>
+          <p class="mb-0"><%= "Codigo postal :#{address.zip_code}" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+
