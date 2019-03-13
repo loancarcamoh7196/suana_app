@@ -6,8 +6,8 @@ class BillingsController < ApplicationController
     total = orders.get_total
     items = orders.to_paypal_items
 
-    address = Address.find(params[:address_id])
-    orders.update_all(address: address)
+    address = params[:address_id]
+    orders.update_all(address_id: address)
 
     payment = Billing.init_payment(items, total)
     
