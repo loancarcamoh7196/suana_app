@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:destroy] do
     patch 'remove_one_item'
     collection do
-      get 'cart'
+      get 'cart'  
       delete 'empty_cart'
       post 'buy'
     end
@@ -54,6 +54,8 @@ Rails.application.routes.draw do
       post 'detail', to: 'billings#detail_billing', as: 'detail'
     end
   end
+
+  resources :stars
   get 'bought_products', to: 'orders#bought_products', as: 'bought_products'
   get 'pages/index'
   get 'pages/home'

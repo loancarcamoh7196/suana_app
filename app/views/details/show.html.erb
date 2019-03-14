@@ -67,12 +67,24 @@
               <%= @detail.product.point_quantity %>  <i class="fas fa-coins" style="color: rgb(94.8%, 74.8%, 33.3%);" ></i> bunnycoins
             </p> 
 
+          
             <div class="p-rating">
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o fa-fade"></i>
+					</div>
+
+            <div class="rating">
+              
+              <label for="star1" class="fa fa-star checked star"  id="star1" value="1"></label>
+              <label for="star1" class="fa fa-star checked star"  id="star2" value="2"></label>
+              <label for="star1" class="fa fa-star checked star"  id="star3" value="3"></label>
+              <label for="star4" class="fa fa-star checked star"  id="star4" value="4"></label>
+              <label for="star5" class="fa fa-star checked star"  id="star5" value="5"></label>
+              
+              
             </div>
 
             <%# <div class="quantity">
@@ -156,7 +168,39 @@
 <style>
   /* Make the image fully responsive */
   .carousel-inner img {
-    width: 38vw;
+    width: 38vw; 
+  }
+  .pointed-star{
+    color: rgba(98%, 77.3%, 4.9%, 0.95);
     
   }
 </style>
+
+
+<script>
+
+
+  
+  $('#star1').click(function () {
+    var valStar = $('#star1').val();
+    console.log(valStar);
+    $('#star1').addClass('pointed-star');
+    // $.ajax({
+    //   type: "GET",
+    //   url: "<%= details_path %>",
+    //   data: { buscador: searchQuery }
+    // });
+  });
+
+  $('#star2').click(function () {
+    var valStar = $('#star2').val();
+    console.log(valStar);
+    $('#star1').addClass('pointed-star');
+    $('#star2').addClass('pointed-star')
+    // $.ajax({
+    //   type: "GET",
+    //   url: "<%= details_path %>",
+    //   data: { buscador: searchQuery }
+    // });
+  });
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_164535) do
+ActiveRecord::Schema.define(version: 2019_03_13_225458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,6 +193,16 @@ ActiveRecord::Schema.define(version: 2019_03_13_164535) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stars", force: :cascade do |t|
+    t.bigint "detail_id"
+    t.bigint "user_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["detail_id"], name: "index_stars_on_detail_id"
+    t.index ["user_id"], name: "index_stars_on_user_id"
+  end
+
   create_table "suggestions", force: :cascade do |t|
     t.string "subject"
     t.text "content"
@@ -257,6 +267,8 @@ ActiveRecord::Schema.define(version: 2019_03_13_164535) do
   add_foreign_key "orders", "details"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "authors"
+  add_foreign_key "stars", "details"
+  add_foreign_key "stars", "users"
   add_foreign_key "suggestions", "users"
   add_foreign_key "townships", "regions"
   add_foreign_key "wishlists", "details"
