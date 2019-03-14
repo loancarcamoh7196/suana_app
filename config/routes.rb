@@ -57,10 +57,16 @@ Rails.application.routes.draw do
 
   resources :stars
   get 'bought_products', to: 'orders#bought_products', as: 'bought_products'
-  get 'pages/index'
-  get 'pages/home'
-  get 'pages/contact'
-  get 'pages/us'
+
+  resources :pages, only:[] do
+    collection do
+      get 'index'
+      get 'home'
+      get 'contact'
+      get 'us'
+    end
+  end
+  
   
 
   root 'details#index'
