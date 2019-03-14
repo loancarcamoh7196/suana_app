@@ -1,4 +1,16 @@
 <%# Details - Show  %>
+<%#  Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3><%= "#{@detail.product.title} #{@detail.chapter}".html_safe %> </h3>
+			<div class="site-pagination">
+				<%= link_to 'Home' %> /
+				<%= link_to 'Producto' %> /
+        <%= link_to 'Detalle' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 <%# Permitir ver a todos   %>
 <div class="container">
   <%# Link para volver %>

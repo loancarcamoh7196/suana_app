@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gift.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gift.description %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @gift.points %>
+</p>
+
+<p>
+  <strong>Available:</strong>
+  <%= @gift.available %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @gift.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_gift_path(@gift) %> |
+<%= link_to 'Back', gifts_path %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :gifts
+  resources :claims
   resources :addresses
   resources :authors
   resources :banners

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  points: 1
+  available: false
+  quantity: 1
+
+two:
+  name: MyString
+  description: MyText
+  points: 1
+  available: false
+  quantity: 1

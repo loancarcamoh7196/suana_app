@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_225458) do
+ActiveRecord::Schema.define(version: 2019_03_14_231806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,19 @@ ActiveRecord::Schema.define(version: 2019_03_13_225458) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "claims", force: :cascade do |t|
+    t.integer "points"
+    t.integer "quantity"
+    t.bigint "user_id"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "gift_id"
+    t.index ["address_id"], name: "index_claims_on_address_id"
+    t.index ["gift_id"], name: "index_claims_on_gift_id"
+    t.index ["user_id"], name: "index_claims_on_user_id"
+  end
+
   create_table "clusters", force: :cascade do |t|
     t.string "references"
     t.bigint "product_id"
@@ -157,6 +170,16 @@ ActiveRecord::Schema.define(version: 2019_03_13_225458) do
     t.string "chapter"
     t.index ["brand_id"], name: "index_details_on_brand_id"
     t.index ["product_id"], name: "index_details_on_product_id"
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "points"
+    t.boolean "available"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -255,6 +278,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_225458) do
   add_foreign_key "addresses", "townships"
   add_foreign_key "addresses", "users"
   add_foreign_key "billings", "users"
+  add_foreign_key "claims", "addresses"
+  add_foreign_key "claims", "gifts"
+  add_foreign_key "claims", "users"
   add_foreign_key "clusters", "categories"
   add_foreign_key "clusters", "products"
   add_foreign_key "comments", "details"
