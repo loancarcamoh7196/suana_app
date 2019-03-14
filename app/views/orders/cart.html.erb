@@ -3,8 +3,9 @@
 		<div class="container">
 			<h4>Tu Bolsa de Compras  </h4>
 			<div class="site-pagination">
-				<a href="">Home</a> /
-				<a href="">Tu bolsa de Compras</a>
+        <%= link_to 'Home'.html_safe, '#' %>
+				 /
+				<%= link_to 'Tu Bolsa de Compras'.html_safe , '#' %>
 			</div>
 		</div>
 	</div>
@@ -12,82 +13,84 @@
 
 <%# Carro de Compra %>
 <section class="cart-section spad">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-9">
-            <div class="cart-table">
-               <h2>Carro de Compra</h2>
+  <div class="container">
+    <div class="row">
+      <%# Tabla de Bolsa de Compra %>
+      <div class="col-lg-9">
+        <div class="cart-table">
+          <h2>Bolsa de Compra</h2>
             
-               <% if @orders.present? %>
-                  <div class="cart-table-warp">
-                     <table id="table-cart" >
-                        <thead class="">
-                           <tr>
-                              <th class="product-th">Producto</th>
-                              <th class="quy-th">Cantidad</th>
-                              <th class="total-th" colspan="2">Subtotal</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <% @orders.each do |order| %>
-                              <tr id="<% order.id %>">
-                                 <td class="product-col">
-                                    <% order.detail.images.each do |i|  %>
-                                       <% if order.detail.images.index(i) == 0 %>
-                                          <%= image_tag i %>
-                                       <% end %>
-                                       
+            <% if @orders.present? %>
+              <div class="cart-table-warp">
+                  <table id="table-cart" >
+                    <thead class="">
+                        <tr>
+                          <th class="product-th">Producto</th>
+                          <th class="quy-th">Cantidad</th>
+                          <th class="total-th" colspan="2">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @orders.each do |order| %>
+                          <tr id="<% order.id %>">
+                              <td class="product-col">
+                                <% order.detail.images.each do |i|  %>
+                                    <% if order.detail.images.index(i) == 0 %>
+                                      <%= image_tag i %>
                                     <% end %>
                                     
-                                    <div class="pc-title">
-                                       <h4><%= "#{order.detail.product.title} - #{order.detail.chapter}".html_safe %></h4>    
-                                       $<span id="price-<%= order.id %>"><%= order.detail.price.to_i %></span>
-                                    </div>
-                                 </td>
-                                 <td id="quantity-bottons" class="quy-col">
-                                    <div class="quantity">
-                                       <% if order.quantity > 1 %>
-                                          <%= link_to '<i class="far fa-minus-square"></i>'.html_safe, order_remove_one_item_path(order.id), method: :patch, remote: true, class: 'btn-outline-danger btn-sm', id: 'btn-plus' %>
-                                          <%elsif order.quantity == 1  %>
-                                          <i class="far fa-minus-square btn-sm btn-outline-secondary" id='btn-plus-bloque' ></i>
-                                       <% end %>
-                                       <span id="quantity-<%= order.id %>"><%= order.quantity.to_i %></span>
-                                       <% if order.quantity > 0 && order.detail.quantity > 0 %>
-                                          <%= link_to '<i class="far fa-plus-square"></i>'.html_safe, detail_orders_path(order.detail), method: :post, remote: true, class: 'btn-outline-success btn-sm', id: "mas-#{order.id}" %>
-                                          <% else %>
-                                          <i class="far fa-plus-square btn-sm btn-outline-secondary" id='btn-plus-bloque' >
-                                       <% end %>
-                                    </div>
-                                 </td>
-                                 <td class="total-col" >
-                                    <h4> $<span id="subtotal-<%= order.id %>" value="<%= (order.price.to_i * order.quantity) %>"><%= (order.price.to_i * order.quantity) %></span> </h4>   
-                                 </td>
-                                 <td class="total-col"> 
-                                    <%= link_to '<i class="fas fa-window-close"></i>'.html_safe, order_path(order.id), method: :delete, class: 'float-right',style: 'color: rgba(81%, 0%, 16.2%, 0.972);', data:{confirm: '¿Estas Segur@?'}  %>
-                                 </td>
-                              </tr>
-                           <% end %>
-                        </tbody>
-                     </table> 
-                     
-                  </div>    
-                  <div class="total-cost">
-                        <h6>Total <span>$<%= @total %></span></h6>
-                     </div>   
-               <% else %>
-                  No tienes productos en el carro... <br><br>
-               <% end %>
-            </div>
-         </div>
-
-         <div class="col-lg-3 card-right">
-            <%= link_to '<i class="fas fa-trash"></i> Vaciar Carro'.html_safe , empty_cart_orders_path, class: 'site-btn btn-outline-danger ', method: :delete %>  
-
-            <%= link_to ' Seguir Comprando'.html_safe, root_path, class: 'site-btn btn-info ' %>
-
-            <%= link_to '<i class="fas fa-cash-register"></i>  Pagar'.html_safe, choose_address_path, class: 'site-btn sb-dark btn-success ' %>
-         </div>
+                                <% end %>
+                                
+                                <div class="pc-title">
+                                    <h4><%= "#{order.detail.product.title} - #{order.detail.chapter}".html_safe %></h4>    
+                                    $<span id="price-<%= order.id %>"><%= order.detail.price.to_i %></span>
+                                </div>
+                              </td>
+                              <td id="quantity-bottons" class="quy-col">
+                                <div class="quantity">
+                                    <% if order.quantity > 1 %>
+                                      <%= link_to '<i class="far fa-minus-square"></i>'.html_safe, order_remove_one_item_path(order.id), method: :patch, remote: true, class: 'btn-outline-danger btn-sm', id: 'btn-plus' %>
+                                      <%elsif order.quantity == 1  %>
+                                      <i class="far fa-minus-square btn-sm btn-outline-secondary" id='btn-plus-bloque' ></i>
+                                    <% end %>
+                                    <span id="quantity-<%= order.id %>"><%= order.quantity.to_i %></span>
+                                    <% if order.quantity > 0 && order.detail.quantity > 0 %>
+                                      <%= link_to '<i class="far fa-plus-square"></i>'.html_safe, detail_orders_path(order.detail), method: :post, remote: true, class: 'btn-outline-success btn-sm', id: "mas-#{order.id}" %>
+                                      <% else %>
+                                      <i class="far fa-plus-square btn-sm btn-outline-secondary" id='btn-plus-bloque' >
+                                    <% end %>
+                                </div>
+                              </td>
+                              <td class="total-col" >
+                                <h4> $<span id="subtotal-<%= order.id %>" value="<%= (order.price.to_i * order.quantity) %>"><%= (order.price.to_i * order.quantity) %></span> </h4>   
+                              </td>
+                              <td class="total-col"> 
+                                <%= link_to '<i class="fas fa-window-close"></i>'.html_safe, order_path(order.id), method: :delete, class: 'float-right',style: 'color: rgba(81%, 0%, 16.2%, 0.972);', data:{confirm: '¿Estas Segur@?'}  %>
+                              </td>
+                          </tr>
+                        <% end %>
+                    </tbody>
+                  </table> 
+                  
+              </div>    
+              <div class="total-cost">
+                    <h6>Total <span>$<%= @total %></span></h6>
+                  </div>   
+            <% else %>
+              No tienes productos en el carro... <br><br>
+            <% end %>
+        </div>
       </div>
-   </div>
+
+      <%# Botones costado  Derecho de la página %>
+      <div class="col-lg-3 card-right">
+        <%= link_to '<i class="fas fa-trash"></i> Vaciar Carro'.html_safe , empty_cart_orders_path, class: 'site-btn btn-outline-danger ', method: :delete %>  
+
+        <%= link_to ' Seguir Comprando'.html_safe, root_path, class: 'site-btn btn-info ' %>
+
+        <%= link_to '<i class="fas fa-cash-register"></i>  Pagar'.html_safe, choose_address_path, class: 'site-btn sb-dark btn-success ' %>
+      </div>
+    </div>
+  </div>
 
 </section>

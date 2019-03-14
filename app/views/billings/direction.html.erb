@@ -1,13 +1,27 @@
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Selecciona una Dirección  </h4>
+			<div class="site-pagination">
+        <%= link_to 'Home'.html_safe, '#' %>
+				 /
+				<%= link_to 'Compras'.html_safe , '#' %>
+        /
+        <%= link_to 'Selecciona una Dirección', '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+
 <%# Vista completa para seleccion de direccion para envio %>
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h2>Selecciona un Dirección</h2>
-      <hr>
-      <%= link_to '<i class="fas fa-plus"></i> Agregar dirección'.html_safe, new_address_path, remote: true, class: 'btn btn-outline-success float-left' %>
+    <div class="col-12 m-3">
+      
+      <%= link_to '<i class="fas fa-plus"></i> Agregar dirección'.html_safe, new_address_path, remote: true, class: 'site-btn sb-dark btn-outline-success float-left' %>
       
       <%= form_tag(pre_pay_billings_path, method: :post) do %>
-        <%= submit_tag("Esta direción quiero", class: 'btn btn-outline-primary float-right') %>
+        <%= submit_tag('✔ Esta direción quiero'.html_safe, class: 'site-btn btn-outline-primary float-right') %>
         
 
         <br> <br> <br>

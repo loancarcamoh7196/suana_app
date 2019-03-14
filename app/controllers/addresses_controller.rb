@@ -28,13 +28,16 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user_id = current_user.id
 
+    
+
     respond_to do |format|
       if @address.save
         flash[:success] = 'Has agregado tu direccion exitosamente.'
         format.js
       else
         flash[:warning] = 'Oh oh... algo ha salido mal, porfavor intentalo más tarde...'
-        redirect_to profiles_path
+        format.html
+        redirect_to root_path
       end
     end
   end
