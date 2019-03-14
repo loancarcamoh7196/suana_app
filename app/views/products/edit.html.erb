@@ -1,6 +1,22 @@
-<h1>Editing Product</h1>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Productos</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Productos'.html_safe , '#' %>
+        /
+				<%= link_to 'Agregar'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <%= render 'form', product: @product %>
+    </div>
+  </div>
+</div>

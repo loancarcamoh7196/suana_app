@@ -28,8 +28,6 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user_id = current_user.id
 
-    
-
     respond_to do |format|
       if @address.save
         flash[:success] = 'Has agregado tu direccion exitosamente.'

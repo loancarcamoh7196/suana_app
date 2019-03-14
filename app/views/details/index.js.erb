@@ -1,1 +1,7 @@
-$('#lista').html("<%= j render @details %>");
+var esta = <%= @details.present? %>
+
+if(esta){
+  $('#lista').html("<%= j render @details %>");
+}else{
+  $('#lista').html('<p> No se han encontrado registros. </p>');
+}

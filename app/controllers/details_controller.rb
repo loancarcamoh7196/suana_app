@@ -12,6 +12,8 @@ class DetailsController < ApplicationController
         elsif params[:buscador].length >= 3
           # @details = Detail.where('product.title LIKE ?', "%#{params[:buscador]}%")
           @details = Detail.joins(:product).where('title LIKE ?', "%#{params[:buscador]}%")
+        else
+          @details = Detail.all
         end
         format.js
       else

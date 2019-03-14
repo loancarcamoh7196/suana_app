@@ -1,11 +1,22 @@
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Productos</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Productos'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+
 <%# Products - Index - Solo vendedor y/o admin  %>
-<div class="container">
+<div class="container ">
 
   <div class="row ">
-    <div class="col-10 col-md-12">
-      <h3>Productos</h3>
-    </div>
-    <div class="col-2 col-md-12">
+    
+    <div class="col-12 col-md-12 m-3">
       <%= link_to '<i class="fas fa-plus"></i> Nuevo Producto'.html_safe, new_product_path, class: 'btn btn-outline-success float-right btn-sm'  %>
     </div>
     <hr>

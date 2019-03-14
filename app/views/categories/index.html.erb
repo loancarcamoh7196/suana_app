@@ -1,7 +1,18 @@
-<div class="container">
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Categorias</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Categorias'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+<div class="container ">
   <div class="row">
-    <div class="col-12">
-      <h2>Categorias</h2>
+    <div class="col-12 mt-3">
       <%= link_to '<i class="fas fa-plus"></i>  Agregar Categoria'.html_safe, new_category_path, remote: true, class: 'btn btn-outline-success col-4 col-sm-2 btn-block btn-sm float-right' %>
       <br>
       <div class="table-responsive">

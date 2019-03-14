@@ -1,6 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Suggestions</h1>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Productos</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Productos'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
 <table>
   <thead>
@@ -20,7 +29,7 @@
         <td><%= suggestion.subject %></td>
         <td><%= suggestion.content %></td>
         <td><%= suggestion.observation %></td>
-        <td><%= suggestion.type %></td>
+        <td><%= suggestion.type_s %></td>
         <td><%= suggestion.user %></td>
         <td><%= link_to 'Show', suggestion %></td>
         <td><%= link_to 'Edit', edit_suggestion_path(suggestion) %></td>
