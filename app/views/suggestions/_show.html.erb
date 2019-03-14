@@ -1,0 +1,40 @@
+<table>
+  <tbody>
+    <tr>
+      <th>Usuario</th>
+      <td>
+        <%= @suggestion.user.email %> <br>
+        <%= @suggestion.user.name %>
+      </td>
+    </tr>
+    <tr>
+      <th>Asunto</th>
+      <td>
+        <h5>
+          <%= @suggestion.subject %>
+          <% if @suggestion.type_s == "preventa" %>
+            <span class="badge badge-success "><%= @suggestion.type_s %></span>
+          <% elsif @suggestion.type_s == "especial" %>
+            <span class="badge badge-danger "><%= @suggestion.type_s %></span>
+          <% else %>
+          <span class="badge badge-info"><%= @suggestion.type_s %></span>
+          <% end %>
+          
+        </h5>
+      </td>
+    </tr>
+    <tr>
+      <th>Contenido</tH>
+      <td>
+        <%= @suggestion.content %>
+      </td>
+    </tr>
+    <tr>
+      <th>Alguna Oservación</th>
+      <td>
+        <%= @suggestion.observation %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,44 +1,40 @@
 <%# Page info %>
 	<div class="page-top-info">
 		<div class="container">
-			<h2>Productos</h2>
+			<h2>Sugerencias y Solicitudes</h2>
 			<div class="site-pagination">
         <%= link_to 'Administración'.html_safe, '#' %>
 				 /
-				<%= link_to 'Productos'.html_safe , '#' %>
+				<%= link_to 'Sugerencias y Solicitudes'.html_safe , '#' %>
 			</div>
 		</div>
 	</div>
 <%# Page info end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Content</th>
-      <th>Observation</th>
-      <th>Type</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="table-responsive">
+        <table class="table table-fullwidth">
+          <thead>
+            <tr>
+              <th>ID </th>
+              <th>Asunto</th>
+              <th>Tipo de Sugerencia o Solicitud </th>
+              <th>Usuario que ha realizado </th>
+              <th>Fecha</th>
+              <th>¿Revisado?</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @suggestions.each do |suggestion| %>
-      <tr>
-        <td><%= suggestion.subject %></td>
-        <td><%= suggestion.content %></td>
-        <td><%= suggestion.observation %></td>
-        <td><%= suggestion.type_s %></td>
-        <td><%= suggestion.user %></td>
-        <td><%= link_to 'Show', suggestion %></td>
-        <td><%= link_to 'Edit', edit_suggestion_path(suggestion) %></td>
-        <td><%= link_to 'Destroy', suggestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <%= render @suggestions %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Suggestion', new_suggestion_path %>
+<%= render 'shared/modal' %>

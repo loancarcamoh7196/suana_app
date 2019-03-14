@@ -1,10 +1,23 @@
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Banner</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Banner'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h2>Banners</h2>
+    <div class="col-12 mt-3" >
+      
       <%= link_to '<i class="fas fa-plus"></i>    Agregar banner'.html_safe, new_banner_path, remote: true, class: 'btn btn-sm btn-outline-success btn-block col-3 float-right' %>
       <br>
-      <div class="table-responsive">
+      <div class="table-responsive mt-3">
         <table class="table table-hover table-fullwidth">
           <thead>
             <tr>

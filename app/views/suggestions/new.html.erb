@@ -1,10 +1,22 @@
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Buzón de Sugerencias y Pedidos</h2>
+			<div class="site-pagination">
+        <%= link_to 'Home'.html_safe, '#' %>
+				 /
+				<%= link_to 'Buzón de Sugerencias y Pedidos'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 <div class="container">
   <div class="row">
-    <div class="col-12">
-        <h3>Buzón de Sugerencias</h3>
-				<%= link_to 'Volver donde estaba'.html_safe, :back , class: 'btn btn-sm btn-outline-warning float-right', title: 'Descuida,todos nos perdemos alguna vez.'
+    <div class="col-12 mt-3">
+       
+				<%= link_to 'Volver donde estaba'.html_safe, :back , class: 'site-btn sb-dark btn-sm btn-outline-warning float-right', title: 'Descuida,todos nos perdemos alguna vez.'
 				 %>
-				 <br>
+				 <br><br>
 				 <div id="msj-error"></div>
 				<hr>
     </div>
@@ -36,6 +48,3 @@
     </div>
   </div>  
 </div>
-
-
-<%= link_to 'Back', suggestions_path %>

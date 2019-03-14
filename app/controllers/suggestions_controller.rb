@@ -1,16 +1,18 @@
 class SuggestionsController < ApplicationController
-  before_action :set_suggestion, only: [:show,  :update, :destroy]
+  before_action :set_suggestion, only: %i[show update destroy]
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy, :destroy]
 
   # GET /suggestions
   # GET /suggestions.json
   def index
-    @suggestions = Suggestion.all
+    @suggestions = Suggestion.all.order('revised ASC, id DESC ')
+    @title = "Sugerencias y Pedidos"
   end
 
   # GET /suggestions/1
   # GET /suggestions/1.json
   def show
+    respond_to :js
   end
 
   # GET /suggestions/new
@@ -45,27 +47,17 @@ class SuggestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /suggestions/1
-  # PATCH/PUT /suggestions/1.json
-  def update
+  def revised
+    @suggestion = Suggestion.find(params[:id])
+    @suggestion.revised = true
+
     respond_to do |format|
-      if @suggestion.update(suggestion_params)
-        format.html { redirect_to @suggestion, notice: 'Suggestion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @suggestion }
+      if @suggestion.save
+        flash[:info] = "El mensaje a sido revisado #{@suggestion.id}"
+        format.js
       else
         format.html { render :edit }
-        format.json { render json: @suggestion.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /suggestions/1
-  # DELETE /suggestions/1.json
-  def destroy
-    @suggestion.destroy
-    respond_to do |format|
-      format.html { redirect_to suggestions_url, notice: 'Suggestion was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -77,6 +69,6 @@ class SuggestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def suggestion_params
-      params.require(:suggestion).permit(:subject, :content, :observation, :user_id)
+      params.require(:suggestion).permit(:subject, :content, :observation, :user_id, :revised)
     end
 end

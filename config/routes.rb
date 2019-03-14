@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :addresses
   resources :authors
-  resources :banners 
+  resources :banners
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :deliveries
   resources :brands, only: %i[index new create edit update destroy]
   resources :categories
-  resources :suggestions, only: %i[index new create edit upgrade]
+  resources :suggestions, only: %i[index new create show] do
+    member do
+      patch 'revised', to: 'suggestions#revised'
+    end
+  end
   resources :products do
     resources :details, only: %i[create destroy edit update]
   end

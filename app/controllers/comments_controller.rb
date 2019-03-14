@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit update destroy]
 
+  def create
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.detail_id = params[:detail_id]
+    
+    @comment.save
+    respond_to :js
+  end
+  
   def index
     respond_to do |format|
       if !params[:buscador].nil?
@@ -21,24 +30,7 @@ class CommentsController < ApplicationController
   def new
     @detail = Detail.find(params[:detail_id])
     @comment = Comment.new
-    
     respond_to :js
-  end
-  
-  def create
-    @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
-    @comment.detail_id = params[:detail_id]
-    
-    @comment.save
-    respond_to :js
-        
-
-    # if @comment.save
-    #     redirect_to posts_path
-    # else
-    #     redirect_to posts_path, alert: 'Error. Intente nuevamente' 
-    # end
   end
 
   def edit

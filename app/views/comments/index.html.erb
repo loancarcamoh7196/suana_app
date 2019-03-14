@@ -1,8 +1,21 @@
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h2>Comentarios</h2>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Comentarios'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h2>Comentarios</h2>
-      <div class="input-group mb-3">
+    <div class="col-12 mt-3">
+      
+      <div class="input-group mt-3">
         <div class="header-search-form">
           <input type="text" name="buscador" id="buscador" class="form-control" placeholder=" Ingrese palabras que desea buscar en los comentarios">
           <button><i class="flaticon-search"></i></button>                    
@@ -11,7 +24,7 @@
       </div>  
 
 
-      <div class="table-responsive">
+      <div class="table-responsive mt-3">
         <table class="table table-fullwidth table-hover ">
           <thead>
             <tr>
@@ -37,13 +50,11 @@
                 <td><%= "#{comment.detail.product.title} <br> Capítulo #{comment.detail.chapter}".html_safe %></td>
                 <td><%= time_ago_in_words(comment.created_at) %></td>
                 <td>
-                  
                   <% if comment.banned %>
                     <%= link_to '<i class="fas fa-ban"></i>'.html_safe, '#', remote:true, method: :post, class: 'btn btn-sm btn-secondary' %>
                   <% else %>
                     <%= link_to '<i class="fas fa-ban"></i>'.html_safe, comment_banned_path(comment), remote:true, method: :post, class: 'btn btn-sm btn-danger' %>
                   <% end %>
-                  
                 </td>
               </tr>
             <% end %>
@@ -60,7 +71,7 @@
     var searchQuery = $('#buscador').val();
     $.ajax({
       type: "GET",
-      url: "<%= details_path %>",
+      url: "<%= comments_path %>",
       data: { buscador: searchQuery }
     });
   });

@@ -1,0 +1,20 @@
+<tr id="<%= suggestion.id %>">
+  <td><%= suggestion.id %></td>
+  <td><%= suggestion.subject %></td>
+  <td><%= suggestion.type_s.capitalize %></td>
+  <td><%= "#{suggestion.user.email} <br> #{suggestion.user.name}".html_safe %></td>
+  <td><%= "#{suggestion.created_at.strftime('%d/%m/%Y %I:%M')}<br> #{time_ago_in_words(suggestion.created_at) }".html_safe %></td>
+  <td><%= suggestion.revised ? '<span class="badge badge-success">Revisado</span>'.html_safe : '<span class="badge badge-danger">Sin Revisar</span>'.html_safe %></td>
+  <td>
+    <%= link_to ' Ver'.html_safe, suggestion_path(suggestion.id), remote:true, class: 'btn btn-sm btn-outline-info', title: 'Ver Sugerencias o Solicitud'.html_safe %>
+  </td>
+  <td>
+    
+    <% if suggestion.revised %>
+      <%= link_to '<i class="fas fa-check"></i>'.html_safe, '#', remote:true, method: :patch, data: {confirm: '¿Estas segur@?' }, class: 'btn btn-sm btn-outline-secondary', title: 'Ya fue revisado'  %>
+      <% else %>
+      <%= link_to '<i class="fas fa-check"></i>'.html_safe, revised_suggestion_path(suggestion.id), remote:true, method: :patch, data: {confirm: '¿Estas segur@?' }, class: 'btn btn-sm btn-outline-success', title: 'Marcar como revisado'  %>
+    <% end %>
+    
+  </td>
+</tr>
