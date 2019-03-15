@@ -1,29 +1,156 @@
-<p id="notice"><%= notice %></p>
+<%# Details - Show  %>
+<%#  Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3><%= "#{@gift.name}".html_safe %> </h3>
+			<div class="site-pagination">
+				<%= link_to 'Home' %> /
+				<%= link_to 'Producto' %> /
+        <%= link_to 'Detalle' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+<%# Permitir ver a todos   %>
+<div class="container">
+  <%# Link para volver %>
+  <div class="back-link">
+    <%= link_to '&lt;&lt Volver'.html_safe, :back %>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gift.name %>
-</p>
+  <%# Información del Producto %>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 ">
+            <div id="demo" class="carousel slide" data-ride="carousel">
 
-<p>
-  <strong>Description:</strong>
-  <%= @gift.description %>
-</p>
+              <%# Imagen del producto %>
+              <ul class="carousel-indicators">
+                <% @gift.images.each do |i|  %>
+                  <% if @gift.images.index(i) == 0 %>
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <% else %>
+                    <li data-target="#demo" data-slide-to="<%= @gift.images.index(i) %>"></li>
+                  <% end %>           
+                <% end %>
+              </ul>
+              <!-- The slideshow -->
+              <div class="carousel-inner">
+                <% @gift.images.each do |i|  %>
+                  <% if @gift.images.index(i) == 0 %>
+                    <div class="carousel-item active">
+                      <%= image_tag i.variant(resize: '350x350') %>
+                    </div>
+                  <% else %>
+                    <div class="carousel-item">
+                      <%= image_tag i.variant(resize: '350x350') %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>  
+            
+              <!-- Left and right controls -->
+              <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+              
+            </div>
+          </div>    
+            
+          <div class="col-6">
+            <h3 class="card-title p-title">
+                <%= "#{@gift.name}".html_safe %>
+                <%= '<span class="badge  badge-dark">Regalo</span>'.html_safe %>
+            </h3>
+            <br><br>
+            <!-- <p><%#= "#{@gift.brand.name}".html_safe %></p> -->
+            <h4 class="p-price"><%= "$#{@gift.points}"  %><i class="fas fa-coins" style="color: rgb(94.8%, 74.8%, 33.3%);" ></i> bunnycoins</span></h4>
+            <p>
+              Disponible: <span id="cantidad" value="<%= @gift.quantity %>"><%= @gift.quantity %>   
+            </p>
+            
 
-<p>
-  <strong>Points:</strong>
-  <%= @gift.points %>
-</p>
+            <div class="rating">
+              
+              <label for="star1" class="fa fa-star checked star"  id="star1" value="1"></label>
+              <label for="star1" class="fa fa-star checked star"  id="star2" value="2"></label>
+              <label for="star1" class="fa fa-star checked star"  id="star3" value="3"></label>
+              <label for="star4" class="fa fa-star checked star"  id="star4" value="4"></label>
+              <label for="star5" class="fa fa-star checked star"  id="star5" value="5"></label>
+              
+              
+            </div>
 
-<p>
-  <strong>Available:</strong>
-  <%= @gift.available %>
-</p>
+            <%# <div class="quantity">
+						  <p>Cantidad</p>
+              <div class="pro-qty"><input type="text" value="1"></div>
+            </div> %>
+            <br><br>
+            <div class="row">
+              <%= link_to ' Reclamar Regalo'.html_safe, direction_claim_path(@gift), method: :post, class: 'btn site-btn btn-lg btn-block col-12' %>
+                <%# link_to 'Add to Cart', product_orders_path(product.id), class: 'btn btn-primary', method: :post %>
+            </div>     
+            <%# Detalles acordeón %>
+            <div id="accordion" class="accordion-area">
+              <div class="panel">
+                <div class="panel-header" id="headingOne">
+                  <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1"> Detalles </button>
+                </div>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @gift.quantity %>
-</p>
+                <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="panel-body">
+                    <p><%= "#{@gift.description}".html_safe %></p>
+                    <br>
+                    <%# <h4> %>
+                      <%# @clusters.each  do |c|  %>
+                       <!-- <span class="badge badge-pill badge-dark"><%#= c.category.name %></span>&nbsp; --> 
+                      <%# end %>  
+                    <%# </h4> %>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="panel">
+                <div class="panel-header" id="headingTwo">
+                  <button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">Pago y Envío </button>
+                </div>
+                <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="panel-body">
+                    
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi id amet, modi quia aliquid sapiente! Totam, cum sit nisi non assumenda ratione tempora maxime sapiente dignissimos sint a facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, soluta. Sequi ipsum, itaque sint quasi labore atque harum, voluptatibus ducimus dolore omnis rem sed aliquid eligendi fuga ab animi autem?
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <%# Fin de acordeón %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%# FIN ~ Información del Producto %>
 
-<%= link_to 'Edit', edit_gift_path(@gift) %> |
-<%= link_to 'Back', gifts_path %>
+  
+</div>
+
+<%= render 'comments/modal' %>
+
+<hr>
+
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 38vw; 
+  }
+  .pointed-star{
+    color: rgba(98%, 77.3%, 4.9%, 0.95);
+    
+  }
+</style>
+

@@ -1,8 +1,8 @@
-var datos = "<%= @details.present? %>";
-var values = '<%= @details %>';
+var datos = "<%= @gifts.present? %>";
+var values = '<%= @gifts %>';
 
 if(values.length > 0 && datos !="false"){
-  $('#lista').html("<%= j render @details %>");
+  $('#lista').html("<%= j render 'details/gift', gifts: @gifts %>");
 }else{
   $('#lista').html("<p> No se ha encontrado resultado </p>");
 }

@@ -1,0 +1,30 @@
+<p>Código de compra: <%= @claim.id %></p>
+<p>Email de cliente: <%= @claim.user.email %></p>
+<p>Nombre de cliente: <%= @claim.user.name %></p>
+
+<div class="table-responsive">
+  <table class="table table-hover" id="list-address" >
+    <thead>
+      <th >Nombre del Producto</th>
+      <th>Cantidad</th>
+      <th>Valor en <i class="fas fa-coins" style='color: rgb(94.8%, 74.8%, 33.3%);'></i> bc</th>
+      <th colspan="2">Direccion</th>
+
+    </thead>
+    <tbody>
+      <% @gifts.each do |claim|  %>S
+        <tr>
+          <td> <%= gift.name %> </td>
+          <td> <%= claim.quantity %></td>
+          <td> <%= claim.price %> </td>
+          <td> <%= "#{claim.addresss.street }"%> </td>
+        </tr>
+      <% end %>
+      <% if ! @gifts.present? %>
+        <tr id="msj-no-data">
+          <td>No has registrado direcciones para tus envíos</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

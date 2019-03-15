@@ -1,0 +1,26 @@
+<%# Vista completa para seleccion de direccion para envio %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Selecciona un Dirección</h2>
+      <hr>
+      <%= link_to '<i class="fas fa-plus"></i> Agregar dirección'.html_safe, new_address_path, remote: true, class: 'btn btn-outline-success float-left' %>
+      
+      <%= form_tag(execute_claims_path, method: :post) do %>
+        <%= submit_tag("Esta direción quiero", class: 'btn btn-outline-primary float-right') %>
+        <%= hidden_field_tag 'gift_id', "#{@gift.id}" %>
+
+        <br> <br> <br>
+        
+        <div id="list-direction">
+          <% if @addresses.present? %>
+            <%= render  'addresses/address-row', addresses: @addresses %>
+          <% end %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'modal' %>

@@ -4,7 +4,7 @@ class CreateGifts < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.integer :points
-      t.boolean :available
+      t.boolean :available, default: true
       t.integer :quantity
 
       t.timestamps

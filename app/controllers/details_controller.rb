@@ -92,7 +92,7 @@ class DetailsController < ApplicationController
   end
 
   def list_gift
-    @details = data_for_gifts
+    @gifts = data_for_gifts
     respond_to :js
   end
 
@@ -116,7 +116,7 @@ class DetailsController < ApplicationController
 
   private
   def data_for_gifts
-    details = Detail.joins("INNER JOIN products ON products.id = details.product_id AND is_gift = true")
+    details = Gift.where(available: true)
 
     details!=nil ?  details : Detail.where('1 = 2')
   end

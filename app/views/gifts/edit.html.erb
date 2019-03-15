@@ -1,6 +1,20 @@
-<h1>Editing Gift</h1>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3>Editar Regalos</h3>
+			<div class="site-pagination">
+				<%= link_to 'Administración' %> /
+				<%= link_to 'Regalos' %> /
+                <%= link_to 'Editar' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
-<%= render 'form', gift: @gift %>
-
-<%= link_to 'Show', @gift %> |
-<%= link_to 'Back', gifts_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= render 'form', gift: @gift %>
+    </div>
+  </div>
+</div>

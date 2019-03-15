@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :gifts
-  resources :claims
+  resources :gifts 
+  
+  resources :claims do
+    collection do
+      post 'execute'
+      post 'my_claim', to: 'claims#my_claim', as: 'my'
+    end
+    member do
+      post 'direction ', to: 'claims#direction', as: 'direction'
+    end
+  end
   resources :addresses
   resources :authors
   resources :banners
@@ -72,8 +81,6 @@ Rails.application.routes.draw do
       get 'us'
     end
   end
-  
-  
 
   root 'details#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

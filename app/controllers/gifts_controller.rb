@@ -4,7 +4,7 @@ class GiftsController < ApplicationController
   # GET /gifts
   # GET /gifts.json
   def index
-    @gifts = Gift.all
+    @gifts = Gift.where(available: true)
   end
 
   # GET /gifts/1
@@ -19,6 +19,7 @@ class GiftsController < ApplicationController
 
   # GET /gifts/1/edit
   def edit
+    
   end
 
   # POST /gifts
@@ -26,39 +27,37 @@ class GiftsController < ApplicationController
   def create
     @gift = Gift.new(gift_params)
 
-    respond_to do |format|
-      if @gift.save
-        format.html { redirect_to @gift, notice: 'Gift was successfully created.' }
-        format.json { render :show, status: :created, location: @gift }
-      else
-        format.html { render :new }
-        format.json { render json: @gift.errors, status: :unprocessable_entity }
-      end
+    if @gift.save
+      flash[:success] = 'Se ha agregado exitosamente de Regalo.'
+      redirect_to gifts_path
+
+    else
+      flash[:danger] = 'Oh oh... algo salió mal, por favor intentalo más tarde.'
+      redirect_to gifts_path
     end
   end
 
   # PATCH/PUT /gifts/1
   # PATCH/PUT /gifts/1.json
   def update
-    respond_to do |format|
-      if @gift.update(gift_params)
-        format.html { redirect_to @gift, notice: 'Gift was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gift }
-      else
-        format.html { render :edit }
-        format.json { render json: @gift.errors, status: :unprocessable_entity }
-      end
+    
+    if @gift.update(gift_params)
+      flash[:success] = 'Se ha actualizado exitosamente de Regalo.'
+      redirect_to gifts_path
+    
+    else
+      flash[:danger] = 'Oh oh... algo salió mal, por favor intentalo más tarde.'
+      redirect_to gifts_path
     end
+    
   end
 
   # DELETE /gifts/1
-  # DELETE /gifts/1.json
   def destroy
     @gift.destroy
-    respond_to do |format|
-      format.html { redirect_to gifts_url, notice: 'Gift was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    flash[:danger] = 'Ha eliminado el regalo correctamente.'
+    respond_to :js    
   end
 
   private
@@ -69,6 +68,6 @@ class GiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:name, :description, :points, :available, :quantity)
+      params.require(:gift).permit(:name, :description, :points, :available, :quantity, images: [])
     end
 end

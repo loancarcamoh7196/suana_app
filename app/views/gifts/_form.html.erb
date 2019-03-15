@@ -11,32 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, 'Nombre' %>
+    <%= form.text_field :name, class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :description, 'Descripción' %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
+  <div class="form-group">
+    <%= form.label :points, 'Valor (cantidad de puntos)' %>
+    <%= form.number_field :points, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :available %>
-    <%= form.check_box :available %>
+  <div class="form-group">
+    <%= form.check_box :available, class: 'form-check-input' %>
+    <%= form.label :available, '¿Esta disponible?'  , class: 'form-check-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+  <div class="form-group">
+    <%= form.label :quantity, 'Cantidad' %>
+    <%= form.number_field :quantity, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :images, 'Imagenes asociadas' %>
+    <%= form.file_field :images, multiple: true,  class: 'form-control-file' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Enviar', class: 'btn btn-outline-success col-5' %>
+    <%= link_to 'Back', gifts_path, class: 'btn btn-outline-warning float-right col-5' %>
   </div>
 <% end %>

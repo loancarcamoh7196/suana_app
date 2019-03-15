@@ -1,0 +1,40 @@
+<% gifts.each do |gift| %>
+  <div class=" col-lg-4 col-sm-6 ">
+    <div class="product-item">
+      <div class="pi-pic">    
+          <%= '<div class="tag-sale">Regalo</div>'.html_safe  %>
+          <% if gift.images.attached? %>
+            <% gift.images.each do |image|  %>
+              <% if gift.images.index(image) == 0 %>
+                <%= image_tag image %>
+              <% end %>
+            <% end %>  
+          <% else %>
+            <i class="fas fa-shopping-bag fa-8x"></i>
+          <% end %>
+        
+          <div class="pi-links">
+          <%# if user_signed_in?   %>
+              <%# if detail.in_wishlist(current_user) != nil %>
+                  <%#= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :delete, class: 'btn btn-sm btn-outline-secondary', title: 'Eliminar a mi Lista de Deseos', remote: true, id: "wishlist-#{detail.id}" %> 
+              <%# else %>
+                  <%#= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, remote: true, class: 'wishlist-btn btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos',  id: "wishlist-#{detail.id}" %> 
+              <%# end %>
+              <%#= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, '#',class: ' btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' , remote: true %>
+          <%# end %>
+        
+        
+          <%= link_to '<i class="far fa-eye"></i>'.html_safe, gift_path(gift), class: 'btn btn-sm btn-outline-info', title: 'Ver mas Detalle' %>
+          </div>
+      </div>
+      <div class="pi-text" id="gift-info-<%= gift.id %>">
+        <h6>
+          <%=  "#{gift.points.to_i} <i class='fas fa-coins' style='color: rgb(94.8%, 74.8%, 33.3%);'></i> bc".html_safe   %>
+        </h6>
+        <p><%= gift.name.html_safe %></p>
+        
+      </div>
+    </div>
+  </div>
+
+<% end %>

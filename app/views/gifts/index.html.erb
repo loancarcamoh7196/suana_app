@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3>Regalos</h3>
+			<div class="site-pagination">
+				<%= link_to 'Administración' %> /
+				<%= link_to 'Regalos' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
-<h1>Gifts</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <%= link_to 'Agregar Regalo', new_gift_path, class: 'btn btn-outline-success float-right' %>
+      <div class="table-responsive">
+        <table class="table table-fullwidth ">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Puntos</th>
+            <th>¿Esta disponible?</th>
+            <th>Cantidad </th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Points</th>
-      <th>Available</th>
-      <th>Quantity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody id="lista">
+          <%= render @gifts %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @gifts.each do |gift| %>
-      <tr>
-        <td><%= gift.name %></td>
-        <td><%= gift.description %></td>
-        <td><%= gift.points %></td>
-        <td><%= gift.available %></td>
-        <td><%= gift.quantity %></td>
-        <td><%= link_to 'Show', gift %></td>
-        <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
-        <td><%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'shared/modal' %>
 
-<br>
 
-<%= link_to 'New Gift', new_gift_path %>

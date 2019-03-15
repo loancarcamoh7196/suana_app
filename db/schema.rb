@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_231806) do
     t.string "name"
     t.text "description"
     t.integer "points"
-    t.boolean "available"
+    t.boolean "available", default: true
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

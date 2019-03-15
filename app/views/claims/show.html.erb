@@ -1,24 +1,81 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <%= wicked_pdf_image_tag('system/logo.png',height: '125vh', class:'float-right') %> 
+        <br>
+        <br>
+        <h1 class="card-title text-center">Reclama Regalo n° <%= @claim.id %></h1>
+        <br>
+        <p>
+          <div>Tiendita Suana</div> 
+          <div>Venta de Comics, Magas,Libros y Revista online</div>
+          <div>Santiago, Chile</div>
+          <div>tiendasuana@gmail.com</div>
+        </p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Points:</strong>
-  <%= @claim.points %>
-</p>
+  <div class="col-12">
+    <div class="table-responsive">
+      <table class="table table-fullwidth table-striped table-bordered ">
+        <tbody>
+          <tr>
+            <th>Fecha Emisión: </th>
+            <td><%= @claim.created_at.strftime("%d/%m/%Y") %></td>
+            <th colspan="2">Fecha Vencimiento</th>
+            <td><%= @claim.created_at.strftime("%d/%m/%Y") %></td>
+          </tr>
+          <tr>
+            <th>RUT:</th>
+            <td> <%= @claim.user.rut %> </td>
+            <th>Email: </th>
+            <td colspan="2"> <%= @claim.user.email %> </td>
+          </tr>
+          <tr>
+            <th>Nombre del cliente:</th>
+            <td colspan="4"> <%= @claim.user.name %> </td>
+      
+          </tr>
+          <tr>
+            <th>N° pago:</th>
+            <td colspan="2"><%= @claim.id %> </td>
+            <th> Método de Pago </th>
+            <td>Bunny-points</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @claim.quantity %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @claim.user %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @claim.address %>
-</p>
-
-<%= link_to 'Edit', edit_claim_path(@claim) %> |
-<%= link_to 'Back', claims_path %>
+  <br>
+  <br>
+  <br>
+  <div class="col-12">
+    
+    <div class="table-responsive">
+      <table class="table table-striped table-sm" id="list-address" >
+        <thead class="table-secondary">
+          <th>Code</th>
+          <th>Producto</th>
+          <th>Precio ( <i class="fas fa-coins" style='color: rgb(94.8%, 74.8%, 33.3%);'></i>bc)</th>
+          <th>Cantidad</th>
+          <th>Fecha de Compra </th>
+          <th>Direccion de envío</th>
+          <th colspan="2"></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <%= @claim.id %> </td>
+            <td> <%= @claim.gift.name %> </td>
+            <td> <%= @claim.points %></td>
+            <td> <%= @claim.quantity %> </td>
+            <td> <%= @claim.created_at.strftime("%d/%m/%y %I:%M") %> </td>
+            <td> <%= "#{@claim.address.street} #{@claim.address.number_street} <br> #{@claim.address.township.name}, #{@claim.address.township.region.name.capitalize}".html_safe %> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<tr id="<%= gift.id %>">
+  <td>
+    <% gift.images.each do |i| %>
+      <% if gift.images.index(i) == 0 %>
+        <%= image_tag i.variant(resize: '80x80') %>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= gift.name %></td>
+  <td><%= gift.description %></td>
+  <td><%= gift.points %></td>
+  <td><%= gift.available ? '<span class="badge badge-success"> Si </span>'.html_safe : '<span class="badge badge-danger">No</span>'.html_safe %></td>
+  <td><%= gift.quantity %></td>
+  <td><%= link_to 'Show', gift %></td>
+  <td><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_gift_path(gift), class: 'btn btn-outline-warning btn-sm' %></td>
+  <td><%= link_to '<i class="fas fa-times"></i>'.html_safe, gift, method: :delete, remote: true, data: { confirm: '¿Estas seguro?' }, class: 'btn btn-outline-danger btn-sm' %></td>
+</tr>
