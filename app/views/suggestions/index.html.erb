@@ -13,7 +13,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 mt-3">
+    <div class="col-lg-12 mt-3">
+      <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js", "chartkick" %>
+      <h5 class="text-dark">Sugerencias para preventa del ultimo mes</h5>
+      <%= pie_chart @grafico %>
+    </div>
+
+    <div class="col-lg-12 mt-5">
       <div class="table-responsive">
         <table class="table table-fullwidth">
           <thead>

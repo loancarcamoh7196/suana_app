@@ -6,6 +6,7 @@ class SuggestionsController < ApplicationController
   # GET /suggestions.json
   def index
     @suggestions = Suggestion.all.order('revised ASC, id DESC ')
+    @grafico =  
     @title = "Sugerencias y Pedidos"
   end
 
