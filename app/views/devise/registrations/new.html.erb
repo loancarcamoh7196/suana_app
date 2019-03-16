@@ -18,7 +18,9 @@
         <div class="row">
           <div class="form-group col-2">
             <%= f.label :phone_type, 'Tipo de telefono' %>
-            <%= f.text_field :phone_type, class: 'form-control' %>
+            
+
+            <%= f.select(:phone_type,[['Celular', :celular],['Telefono', :fijo]],{ prompt: 'Selecciona una opción' }, {  required: true, class: 'form-control'}) %> 
           </div>
           <div class="form-group col-10">
             <%= f.label :phone_number, 'Nro de  Telefono' %>
