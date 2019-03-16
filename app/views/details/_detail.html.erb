@@ -19,7 +19,7 @@
             <% else %>
                 <%= link_to '<i class="fas fa-heart"></i>'.html_safe, detail_wishlist_path(detail), method: :post, remote: true, class: 'wishlist-btn btn btn-sm btn-outline-danger', title: 'Agregar a mi Lista de Deseos',  id: "wishlist-#{detail.id}" %> 
             <% end %>
-            <%= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, '#',class: ' btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' , remote: true %>
+            <%= link_to '<i class="fas fa-shopping-bag"></i>'.html_safe, detail_orders_path(detail.id), method: :post, remote: true,class: ' btn btn-sm btn-outline-success', title: 'Agregar a Carro de Compra' , remote: true %>
         <% end %>
       
       

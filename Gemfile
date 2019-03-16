@@ -69,5 +69,5 @@ gem 'cancancan'
 gem 'activeadmin'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary' 
-gem 'chartkick'
+gem 'chartkick' 
 
