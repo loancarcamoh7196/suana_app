@@ -1,4 +1,16 @@
-<div class="container">
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Perfil  </h4>
+			<div class="site-pagination">
+        <%= link_to 'Home'.html_safe, root_path %>
+				 /
+				<%= link_to 'Perfil'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
+<div class="container mt-5">
   <div class="row">
     <%= render 'shared/user-lateral' %>
     <div class="col-lg-9" id ="cuerpo-seccion">

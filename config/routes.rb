@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :gifts 
-  
+  resources :gifts
   resources :claims do
     collection do
       post 'execute'
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   resources :addresses
   resources :authors
   resources :banners
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

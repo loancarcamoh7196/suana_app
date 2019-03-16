@@ -16,49 +16,50 @@
 					</div>
 					
 					<% if user_signed_in? %>
-					<div class="col-xl-11 col-10 col-lg-10 col-sm-12 ">
-						<div class="user-panel ">
+						<div class="col-xl-11 col-10 col-lg-10 col-sm-12 ">
+							<div class="user-panel ">
 
-							<div class="float-right">
-								<%# Opción de Bolsa de Compra %>
-								<div class="up-item">
-									<div class="shopping-card ">
-										<i class="flaticon-bag"></i>
-										<span id="count-cart" ><%= current_user.cart.total_items %></span>
+								<div class="float-right">
+									<%# Opción de Bolsa de Compra %>
+									<div class="up-item">
+										<div class="shopping-card ">
+											<i class="flaticon-bag"></i>
+											<span id="count-cart" ><%= current_user.cart.total_items %></span>
+										</div>
+										<a href="<%= cart_orders_path %>">Bolsa de Compra</a>
 									</div>
-									<a href="<%= cart_orders_path %>">Bolsa de Compra</a>
-								</div>
-							
-								<div class="up-item">
-									<div class="shopping-card ">
-										<i class="fas fa-coins"></i>
-										<span id="count-cart"><%= current_user.points %></span>
+								
+									<div class="up-item">
+										<div class="shopping-card ">
+											<i class="fas fa-coins"></i>
+											<span id="count-cart"><%= current_user.points %></span>
+										</div>
+										<a href="<%= cart_orders_path %>">BunnyCoins</a>
 									</div>
-									<a href="<%= cart_orders_path %>">BunnyCoins</a>
-								</div>
 
-								<div class="up-item">
-									<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
-									<div class="shopping-card ">
-										<a href="<%= profiles_path %>"><%= current_user.name %></a>
-										<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
-									</div>   	
-									
+									<div class="up-item">
+										<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
+										<div class="shopping-card ">
+											<a href="<%= profiles_path %>"><%= current_user.name %></a>
+											<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
+										</div>   	
+										
+									</div>
 								</div>
+								
 							</div>
-							
 						</div>
-					</div>
 					<% else %>
-					<div class="col-xl-12 col-lg-4">
+					<div class="col-xl-11 col-10 col-lg-10 col-sm-12">
 						<div class="user-panel">
-							<div class="up-item cart-link">
-								<div style="float:right !important;">
-									<i class="flaticon-profile"></i>
-									<a href="<%= new_user_session_path %>" >Inicia sesión</a>  o  <a href="<%= new_user_registration_path %>" >Registrate</a>
+							<div class="float-right">
+								<div class="up-item cart-link">
+									<div style="float:right !important;">
+										<i class="flaticon-profile"></i>
+										<a href="<%= new_user_session_path %>" >Inicia sesión</a>  o  <a href="<%= new_user_registration_path %>" >Registrate</a>
+									</div>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 					<% end %>
@@ -73,8 +74,9 @@
 				
 				<ul class="main-menu">
 					<li> <%= link_to 'Home', root_path, title: 'Nuestras novedades estan aquí' %> </li>
-					<li><a href="#">Comics </a></li>
-					<li><a href="#">Manga</a></li>
+					<li><%= link_to 'Catálogo', details_path, title: 'Todos nuestros productos ;)' %></li>
+					<li></a></li>
+					<li><%= link_to 'Manga' %></li>
 					<li><a href="#">Libros <span class="new">New</span> </a> </li>
 					<li><a href="#">Revistas</a>
 						<ul class="sub-menu">
@@ -94,8 +96,8 @@
 							<li><a href="./contact.html">Contact Page</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Blog</a></li>
-					<li><%= link_to 'Administración' %>
+					
+					<li><%= link_to 'Administración', title: 'Hola vendedor :D' %>
 						<ul class="sub-menu">
 							<li><%= link_to 'Productos', products_path %></li>
 							<li><%= link_to 'Regalos', gifts_path %></li>
