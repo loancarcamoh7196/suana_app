@@ -74,18 +74,12 @@
 				
 				<ul class="main-menu">
 					<li> <%= link_to 'Home', root_path, title: 'Nuestras novedades estan aquí' %> </li>
-					<li><%= link_to 'Catálogo', details_path, title: 'Todos nuestros productos ;)' %></li>
+					<li><%= link_to 'Catálogo<span class="new">New</span>'.html_safe, details_path, title: 'Todos nuestros productos ;)' %></li>
 					<li></a></li>
 					<li><%= link_to 'Manga' %></li>
-					<li><a href="#">Libros <span class="new">New</span> </a> </li>
+					<li><a href="#">Libros  </a> </li>
 					<li><a href="#">Revistas</a>
-						<ul class="sub-menu">
-							<li><a href="#">Sneakers</a></li>
-							<li><a href="#">Sandals</a></li>
-							<li><a href="#">Formal Shoes</a></li>
-							<li><a href="#">Boots</a></li>
-							<li><a href="#">Flip Flops</a></li>
-						</ul>
+						
 					</li>
 					<li><a href="#">Nosotros</a>
 						<ul class="sub-menu">
