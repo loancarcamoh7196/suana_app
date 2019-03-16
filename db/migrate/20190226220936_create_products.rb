@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :description
       t.references :author, foreign_key: true
       t.integer :point_quantity
-      t.boolean :is_gift
+      t.boolean :is_gift, default: false
 
       t.timestamps
     end

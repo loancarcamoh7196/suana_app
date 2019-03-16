@@ -1,4 +1,17 @@
-<h1>New Author</h1>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3>Productos</h3>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Productos'.html_safe , '#' %>
+        /
+				<%= link_to 'Agregar'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
 <%= render 'form', author: @author %>
 

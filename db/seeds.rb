@@ -1363,6 +1363,8 @@ end
 
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
+
+
 #Usuarios
 	#Usuario de prueba
 		#Usuario vendedor

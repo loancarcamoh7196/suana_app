@@ -1,0 +1,5 @@
+<tr id="<%= author.id %>">
+  <td><%= author.name %></td>
+  <td><%= link_to '<i class="fas fa-info"></i>'.html_safe, author, remote: true, class: 'btn btn-sm btn-outline-info ' %></td>
+  <td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_author_path(author), remote: true, class: 'btn btn-sm btn-outline-warning' %></td>
+</tr>

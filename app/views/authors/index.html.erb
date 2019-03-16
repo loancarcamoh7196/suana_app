@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%# Page info %>
+	<div class="page-top-info">
+		<div class="container">
+			<h3>Autores</h3>
+			<div class="site-pagination">
+        <%= link_to 'Administración'.html_safe, '#' %>
+				 /
+				<%= link_to 'Autores'.html_safe , '#' %>
+			</div>
+		</div>
+	</div>
+<%# Page info end %>
 
-<h1>Authors</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <%= link_to 'Agregar Autor', new_author_path, remote:true, class: 'btn btn-outline-success float-right mb-2' %>
+      <div class="table-responsive mt-3">
+        <table class="table table-fullwidth">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody id="list">
+            <%= render @authors %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @authors.each do |author| %>
-      <tr>
-        <td><%= author.name %></td>
-        <td><%= author.description %></td>
-        <td><%= link_to 'Show', author %></td>
-        <td><%= link_to 'Edit', edit_author_path(author) %></td>
-        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Author', new_author_path %>
+<%= render 'modal' %>

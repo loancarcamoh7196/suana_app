@@ -4,17 +4,19 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    @authors = Author.all.order('id DESC')
   end
 
   # GET /authors/1
   # GET /authors/1.json
   def show
+    respond_to :js
   end
 
   # GET /authors/new
   def new
     @author = Author.new
+    respond_to :js
   end
 
   # GET /authors/1/edit
@@ -28,8 +30,8 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       if @author.save
-        format.html { redirect_to @author, notice: 'Author was successfully created.' }
-        format.json { render :show, status: :created, location: @author }
+        flash[:success] = "Autor agregado exitosamente."
+        format.js
       else
         format.html { render :new }
         format.json { render json: @author.errors, status: :unprocessable_entity }
@@ -42,8 +44,8 @@ class AuthorsController < ApplicationController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.html { redirect_to @author, notice: 'Author was successfully updated.' }
-        format.json { render :show, status: :ok, location: @author }
+        flash[:success] = "Autor actualizado exitosamente."
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @author.errors, status: :unprocessable_entity }
