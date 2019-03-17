@@ -1,19 +1,26 @@
 <tr id="<%= product.id %>">
-    <td><%= "#{product.title}".html_safe %></td>
-    <td><%= "#{product.description}".html_safe %></td>
-    <td><%= "#{product.author.name}".html_safe %></td>
-    <td><%= "#{product.point_quantity}".html_safe %></td>
-    <td>
-        <%= product.is_gift ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
-    </td>
-    <td>
-        <%= link_to '<i class="fas fa-info"></i>'.html_safe, product, title: 'Detalles', class: 'btn btn-info btn-sm' %>
-    </td>
-    <td>
-        <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_product_path(product), title: 'Editar', class: 'btn btn-warning btn-sm' %>
-    </td>
-    <td>
-        <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, product, method: :delete, data: { confirm: '¿Estas seguro de eliminar?
-         Si eliminas este producto, se eliminara toda la información asociada a él.' }, title: 'Eliminar', class: 'btn btn-danger btn-sm' %>
-    </td>
+  <td><%= "#{product.title}".html_safe %></td>
+  <td><%= "#{product.description}".html_safe %></td>
+  <td><%= "#{product.author.name}".html_safe %></td>
+  <td><%= "#{product.point_quantity}".html_safe %></td>
+  <td>
+    <%= product.is_gift ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
+  </td>
+  <td>
+    <% if can? :show, product %>
+      <%= link_to '<i class="fas fa-info"></i>'.html_safe, product, title: 'Detalles', class: 'btn btn-info btn-sm' %>
+    <% end %>
+      
+  </td>
+  <td>
+    <% if can? :show, product%>
+      <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_product_path(product), title: 'Editar', class: 'btn btn-warning btn-sm' %>
+    <% end %>
+  </td>
+  <td>
+    <% if can? :destroy, product %>
+      <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, product, method: :delete, data: { confirm: '¿Estas seguro de eliminar?
+        Si eliminas este producto, se eliminara toda la información asociada a él.' }, title: 'Eliminar', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  </td>
 </tr>

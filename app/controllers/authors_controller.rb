@@ -1,10 +1,12 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /authors
   # GET /authors.json
   def index
     @authors = Author.all.order('id DESC')
+    @author = Author.new
   end
 
   # GET /authors/1

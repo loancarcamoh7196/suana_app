@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery
+  check_authorization unless: :devise_controller? 
 
+  
   protected
 
   def configure_permitted_parameters
@@ -8,9 +11,16 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      flash[:info] = exception.message
-      format.html { redirect_to root_url }
+    if current_user.nil?
+      session[:next] = request.fullpath
+      flash[:info] = 'Tienes que logear para ingresar.'
+      redirect_to details_path
+    else
+      # render file: "#{Rails.root}/public/403.html", status: 403
+
+      redirect_back(fallback_location: details_path)
     end
+
+
   end
 end

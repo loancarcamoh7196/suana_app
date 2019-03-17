@@ -37,10 +37,16 @@
                 <%= lt.available ? '<span class="badge badge-success"> Yes </span>'.html_safe : '<span class="badge badge-danger"> No </span>'.html_safe %>
               </td>
               <td>
-                <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_detail_path(@product,lt), class: 'btn-outline-warning btn-sm', title: "Editar #{lt.unique_identifider}", remote: true %>
+                <% if can? :edit, lt %>
+                  <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_detail_path(@product,lt), class: 'btn-outline-warning btn-sm', title: "Editar #{lt.unique_identifider}", remote: true %>  
+                <% end %>
+                  
               </td>
               <td>
-                <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,lt), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{lt.unique_identifider}" %>
+                <% if can? :destroy, lt %>
+                  <%= link_to '<i class="fas fa-times"></i>'.html_safe, product_detail_path(@product,lt), method: :delete, class: 'btn-outline-danger btn-sm', title: "Eliminar #{lt.unique_identifider}" %>
+                <% end %>
+                
               </td>
                 
             </tr>

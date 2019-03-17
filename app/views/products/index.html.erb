@@ -17,7 +17,9 @@
   <div class="row ">
     
     <div class="col-12 col-md-12 m-3">
-      <%= link_to '<i class="fas fa-plus"></i> Nuevo Producto'.html_safe, new_product_path, class: 'btn btn-outline-success float-right btn-sm'  %>
+      <% if can? :create, @product %>
+        <%= link_to '<i class="fas fa-plus"></i> Nuevo Producto'.html_safe, new_product_path, class: 'btn btn-outline-success float-right btn-sm'  %>
+      <% end %>
     </div>
     <hr>
     <br><br>

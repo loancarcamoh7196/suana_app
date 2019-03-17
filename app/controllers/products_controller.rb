@@ -2,16 +2,15 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authors, only: %i[new edit]
   before_action :authenticate_user!
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   # GET /products
-  # GET /products.json
   def index
     @products = Product.all
+    @product = Product.new
   end
 
   # GET /products/1
-  # GET /products/1.json
   def show
     @clusters = Cluster.where(product_id: params[:id])
     @detail = Detail.new
@@ -32,7 +31,6 @@ class ProductsController < ApplicationController
   end
 
   # POST /products
-  # POST /products.json
   def create
     @product = Product.new(product_params)
     
@@ -48,7 +46,6 @@ class ProductsController < ApplicationController
   end
 
   # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
 
@@ -69,7 +66,6 @@ class ProductsController < ApplicationController
   end
 
   # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|

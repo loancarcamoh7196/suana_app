@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit update destroy]
-
+  load_and_authorize_resource
+  
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id

@@ -1,10 +1,12 @@
 class GiftsController < ApplicationController
   before_action :set_gift, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /gifts
   # GET /gifts.json
   def index
     @gifts = Gift.where(available: true)
+    @gift = Gift.new
   end
 
   # GET /gifts/1

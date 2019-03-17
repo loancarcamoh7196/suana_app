@@ -7,65 +7,65 @@
     <hr> <br>
     <%# Formulario de detalle %>
     <%= form_with model: [@product, @detail], local: true do |f| %>
-          <%# render 'layouts/error_messages', f: f.object %>
-              
-          <!-- form_for @object, html: { multipart: true }, do |f| -->
-          <!-- form_for @object, html: { class: "classname" }, do |f| -->
+      <%# render 'layouts/error_messages', f: f.object %>
           
-          <div class="row">
-              <div class="form-group col-sm-6 col-lg-3">
-                  <%= f.label :unique_identifider %>
-                  <%= f.text_field :unique_identifider, class: 'form-control', require: true %>
-              </div>
+      <!-- form_for @object, html: { multipart: true }, do |f| -->
+      <!-- form_for @object, html: { class: "classname" }, do |f| -->
+      
+      <div class="row">
+        <div class="form-group col-sm-6 col-lg-3">
+          <%= f.label :unique_identifider %>
+          <%= f.text_field :unique_identifider, class: 'form-control', require: true %>
+        </div>
 
-              <div class="form-group col-sm-6 col-lg-3">
-                  <%= f.label :price, value: 'Precio' %>
-                  <%= f.number_field :price, class: 'form-control', require: true %>
-              </div>
+        <div class="form-group col-sm-6 col-lg-3">
+          <%= f.label :price, value: 'Precio' %>
+          <%= f.number_field :price, class: 'form-control', require: true %>
+        </div>
 
-              <div class="form-group col-sm-6 col-lg-3">
-                  <%= f.label :quantity, "Cantidad" %>
-                  <%= f.number_field :quantity, class: 'form-control', require: true %>
-              </div>
+        <div class="form-group col-sm-6 col-lg-3">
+          <%= f.label :quantity, "Cantidad" %>
+          <%= f.number_field :quantity, class: 'form-control', require: true %>
+        </div>
 
-              <div class="form-group col-sm-6 col-lg-3">
-                  <%= f.label :chapter, 'Capítulo' %>
-                  <%= f.text_field :chapter, class: 'form-control' %>
-              </div>
-          </div>
+        <div class="form-group col-sm-6 col-lg-3">
+          <%= f.label :chapter, 'Capítulo' %>
+          <%= f.text_field :chapter, class: 'form-control' %>
+        </div>
+      </div>
 
-          <div class="row">
-              <div class="form-group col-sm-12 col-lg-6">
-                  <%= f.label :brand_id, "Marca o Editorial" %>
-                  <%= f.select :brand_id, options_for_select(@brands), { include_blank: 'Seleccione editorial o marca', require: true }, class: 'form-control' %> 
-              </div>
+        <div class="row">
+            <div class="form-group col-sm-12 col-lg-6">
+                <%= f.label :brand_id, "Marca o Editorial" %>
+                <%= f.select :brand_id, options_for_select(@brands), { include_blank: 'Seleccione editorial o marca', require: true }, class: 'form-control' %> 
+            </div>
 
-              <div class="form-group col-sm-12 col-lg-6">
-                  <%= f.label :images, 'Imagenes asociadas' %>
-                  <%= f.file_field :images, multiple: true,  class: 'form-control-file' %>
-              </div>
-          </div>
+            <div class="form-group col-sm-12 col-lg-6">
+                <%= f.label :images, 'Imagenes asociadas' %>
+                <%= f.file_field :images, multiple: true,  class: 'form-control-file' %>
+            </div>
+        </div>
 
-          <div class="row">
-              <div class="col-lg-1"></div>
-              <div class="form-group form-check col-sm-12 col-lg-5">
-                  <%= f.check_box :is_reserved, class: 'form-check-input' %>
-                  <%= f.label :is_reserved, "¿Es reserva?", class: 'form-check-label' %>
-              </div>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="form-group form-check col-sm-12 col-lg-5">
+                <%= f.check_box :is_reserved, class: 'form-check-input' %>
+                <%= f.label :is_reserved, "¿Es reserva?", class: 'form-check-label' %>
+            </div>
 
-              <div class="form-group form-check col-sm-12 col-lg-5">
-                  <%= f.check_box :available, class: 'form-check-input' %>
-                  <%= f.label :available, "Disponible", class: 'form-check-label' %>
-              </div>    
-          </div>
-          <br><br>
-          <div class="actions">
-              <div class="row">
-                  <%= f.submit 'Enviar', class: 'btn btn-outline-success col-5' %>
-                  <span class="col-2"> </span>
-                  <%= link_to 'Volver', :back, class: 'btn btn-outline-primary col-5' %>
-              </div>
-          </div>
-      <% end %>
+            <div class="form-group form-check col-sm-12 col-lg-5">
+                <%= f.check_box :available, class: 'form-check-input' %>
+                <%= f.label :available, "Disponible", class: 'form-check-label' %>
+            </div>    
+        </div>
+        <br><br>
+        <div class="actions">
+            <div class="row">
+                <%= f.submit 'Enviar', class: 'btn btn-outline-success col-5' %>
+                <span class="col-2"> </span>
+                <%= link_to 'Volver', :back, class: 'btn btn-outline-primary col-5' %>
+            </div>
+        </div>
+    <% end %>
   </div>
 </div>

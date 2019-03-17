@@ -1,6 +1,6 @@
 class DetailsController < ApplicationController
   before_action :set_detail, only: %i[show edit update destroy]
-  # load_and_authorize_resource
+  load_and_authorize_resource
   
   #Catalogo - Vista de detalle Producto disponibles
   #Arreglar que ve administrador y ver usuario comun

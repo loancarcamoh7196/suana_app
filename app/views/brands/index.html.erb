@@ -13,9 +13,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h2>Editoriales y Marcas</h2>
-      <%= link_to '<i class="fas fa-plus"></i>  Nueva Marca'.html_safe, new_brand_path, remote:true, class: 'btn btn-sm btn-outline-success col-3 btn-block float-right' %>
+    <div class="col-12 mt-3">
+      <% if can? :create, @brand %>
+        <%= link_to '<i class="fas fa-plus"></i>  Nueva Marca'.html_safe, new_brand_path, remote:true, class: 'btn btn-sm btn-outline-success col-3 btn-block float-right' %>
+      <% end %>
       <br>
       <div class="table-responsive">
         <table class="table table-fullwidth table-hover">

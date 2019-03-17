@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:brought_products]
-  
+  load_and_authorize_resource
+
   def create
     @detail = Detail.find(params[:detail_id])
     @order = current_user.orders.where(detail_id: @detail.id, paided: false).first
-    #Reemplaza consulta de order y if, sin embargo por default de qauntity debe ser 0
-    #order = Order.find_or_create_by(detail: @detail, user: current_user, paid: false)
-    #order.quantiry + = 1
     
     if @order.present?
       @order.quantity += 1

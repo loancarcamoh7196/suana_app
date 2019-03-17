@@ -4,18 +4,24 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-    user ||= User.new(role: 3) # guest user (not logged in)
+    user ||= User.new(role: 'ghest') # guest user (not logged in)
     if user.admin?
       can :manage, :all
     elsif user.vendor?
-      can :manage, [Product, Detail, Category]
+      can :manage, [Detail, Category, Brand, Banner]
+      can [:read, :create, :update], [Product, Gift, Author]
+      can [:read, :revised], Suggestion
+      can [:read, :update, :banned], Comment
+      can :manage, :pages
     elsif user.user?
-      can [:index, :show], [Detail, Category]
+      can [:index, :show], [Detail]
       can [:edit, :update, :destroy], Comment, user_id: user.id
       can [:create, :cart, :remove_one_item, :destroy, :buy, :bought_products, :empty_cart], Order
       can [:index, :create, :destroy], Wishlist
+      can [:create, :new], Suggestion
+      can :manage, Billing
     else
-      can [:index, :show], [Detail, Category]
+      can [:index, :show], [Detail, Gifts]
       can :view_for_category, Detail
     end
     #

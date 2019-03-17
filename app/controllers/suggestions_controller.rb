@@ -1,12 +1,14 @@
 class SuggestionsController < ApplicationController
   before_action :set_suggestion, only: %i[show update destroy]
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy, :destroy]
+  load_and_authorize_resource
 
+  
   # GET /suggestions
   # GET /suggestions.json
   def index
     @suggestions = Suggestion.all.order('revised ASC, id DESC ')
-    @grafico =  
+    @grafico = Suggestion.group(:subject).where(type_s: :preventa, created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 7.day)).count
     @title = "Sugerencias y Pedidos"
   end
 

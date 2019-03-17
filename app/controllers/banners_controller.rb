@@ -1,10 +1,13 @@
 class BannersController < ApplicationController
   before_action :set_banner, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
+  
   # GET /banners
   # GET /banners.json
   def index
     @banners = Banner.all.order('id DESC')
+    @banner = Banner.new
   end
 
   # GET /banners/1

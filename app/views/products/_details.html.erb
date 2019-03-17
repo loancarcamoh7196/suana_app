@@ -1,28 +1,26 @@
 <%# Detalle de Producto %>
 <div class="card">
-    <div class="card-body">
-        <div class="row">            
-            <div class="col-8">
-                <h3 class="card-title">
-                    <%= "#{@product.title}".html_safe %>
-                    <%= @product.is_gift ? '<span class="badge  badge-dark">Regalo</span>'.html_safe : nil %>
-                    
-                </h3>
-                <p><%= "#{@product.description}".html_safe %></p>
-                <p><%= @product.author.name %></p>
-                
-                <p class="" title="BunnyCoins"><%= @product.point_quantity %>  <i class="fas fa-coins" style="color: rgb(94.8%, 74.8%, 33.3%);" ></i> bunnycoins</p>
-            </div>
-            <div class="col-4">
-                <h5 class="card-title">
-                    Categorias asociadas
-                </h5>
-                    <% @clusters.each do |c| %>
-                        <span class="badge badge-pill badge-primary"><%= c.category.name %></span>
-                    <% end %>
-                    
-                
-            </div>
+  <div class="card-body">
+    <div class="row">            
+      <div class="col-8">
+        <h3 class="card-title">
+          <%= "#{@product.title}".html_safe %>
+          <%= @product.is_gift ? '<span class="badge  badge-dark">Regalo</span>'.html_safe : nil %>
+              
+        </h3>
+        <p><%= "#{@product.description}".html_safe %></p>
+        <p><%= @product.author.name %></p>
+        
+        <p class="" title="BunnyCoins"><%= @product.point_quantity %>  <i class="fas fa-coins" style="color: rgb(94.8%, 74.8%, 33.3%);" ></i> bunnycoins</p>
+      </div>
+        <div class="col-4">
+          <h5 class="card-title">
+            Categorias asociadas
+          </h5>
+          <% @clusters.each do |c| %>
+            <span class="badge badge-pill badge-primary"><%= c.category.name %></span>
+          <% end %>
         </div>
     </div>
+  </div>
 </div>

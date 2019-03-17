@@ -13,7 +13,9 @@
 <div class="container ">
   <div class="row">
     <div class="col-12 mt-3">
-      <%= link_to '<i class="fas fa-plus"></i>  Agregar Categoria'.html_safe, new_category_path, remote: true, class: 'btn btn-outline-success col-4 col-sm-2 btn-block btn-sm float-right' %>
+      <% if can? :create, @category %>
+        <%= link_to '<i class="fas fa-plus"></i>  Agregar Categoria'.html_safe, new_category_path, remote: true, class: 'btn btn-outline-success col-4 col-sm-2 btn-block btn-sm float-right' %>
+      <% end %>
       <br>
       <div class="table-responsive">
         <table class="table table-fullwidth table-hover" id="table-category">

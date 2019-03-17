@@ -1,5 +1,13 @@
 <tr id="<%= author.id %>">
   <td><%= author.name %></td>
-  <td><%= link_to '<i class="fas fa-info"></i>'.html_safe, author, remote: true, class: 'btn btn-sm btn-outline-info ' %></td>
-  <td><%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_author_path(author), remote: true, class: 'btn btn-sm btn-outline-warning' %></td>
+  <td>
+    <% if can? :show, author %>
+      <%= link_to '<i class="fas fa-info"></i>'.html_safe, author, remote: true, class: 'btn btn-sm btn-outline-info ' %>
+    <% end %>
+  </td>
+  <td>
+      <% if can? :edit, author %>
+    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_author_path(author), remote: true, class: 'btn btn-sm btn-outline-warning' %>
+    <% end %>
+  </td>
 </tr>

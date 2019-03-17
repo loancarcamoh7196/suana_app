@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   
   def index
     @wishlists = current_user.wishlists
@@ -15,9 +16,8 @@ class WishlistsController < ApplicationController
       user: current_user,
       detail_id: params[:detail_id]
     )
-    
-    @wishlist.save
 
+    @wishlist.save
     respond_to do |format|
       format.js { flash[:info] = 'Has agregado producto a tu lista de deseos' }
     end

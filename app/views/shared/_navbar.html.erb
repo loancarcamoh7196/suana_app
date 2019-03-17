@@ -21,24 +21,33 @@
 
 								<div class="float-right">
 									<%# Opción de Bolsa de Compra %>
-									<div class="up-item">
-										<div class="shopping-card ">
-											<i class="flaticon-bag"></i>
-											<span id="count-cart" ><%= current_user.cart.total_items %></span>
+									<% if can? :cart, current_user %>
+										<div class="up-item">
+											<div class="shopping-card ">
+												<i class="flaticon-bag"></i>
+												<span id="count-cart" ><%= current_user.cart.total_items %></span>
+											</div>
+											<%= link_to 'Bolsa de Compras', cart_orders_path %>
 										</div>
-										<a href="<%= cart_orders_path %>">Bolsa de Compra</a>
-									</div>
-								
-									<div class="up-item">
-										<div class="shopping-card ">
-											<i class="fas fa-coins"></i>
-											<span id="count-cart"><%= current_user.points %></span>
+									<% end %>
+
+									
+									<% if current_user.user? %>
+										<div class="up-item">
+											<div class="shopping-card ">
+												<i class="fas fa-coins"></i>
+												<span id="count-cart"><%= current_user.points %></span>
+											</div>
+											<a href="<%= cart_orders_path %>">BunnyCoins</a>
 										</div>
-										<a href="<%= cart_orders_path %>">BunnyCoins</a>
-									</div>
+									<% end %>
+									
 
 									<div class="up-item">
-										<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
+										<% if can? :index, current_user.wishlists %>
+											<%= link_to '<i class="fas fa-heart text-danger"></i>  Mi lista de deseos'.html_safe, wishlists_path  %>	
+										<% end %>
+											
 										<div class="shopping-card ">
 											<a href="<%= profiles_path %>">
 												

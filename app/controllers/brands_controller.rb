@@ -1,9 +1,11 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: %i[show edit update destroy]
-
+  load_and_authorize_resource
+  
   # GET /brands
   def index
     @brands = Brand.all.order('id DESC')
+    @brand = Brand.new
   end
 
   # GET /brands/1

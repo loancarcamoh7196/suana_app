@@ -14,7 +14,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12 mt-3">
-      <%= link_to 'Agregar Autor', new_author_path, remote:true, class: 'btn btn-outline-success float-right mb-2' %>
+      <% if can? :create, @author %>
+        <%= link_to 'Agregar Autor', new_author_path, remote:true, class: 'btn btn-outline-success float-right mb-2' %>
+      <% end %>
       <div class="table-responsive mt-3">
         <table class="table table-fullwidth">
           <thead>

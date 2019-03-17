@@ -1,5 +1,6 @@
 class BillingsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   
   def pre_pay
     orders = current_user.cart
