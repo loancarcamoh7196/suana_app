@@ -12,7 +12,7 @@ class Ability
       can [:read, :create, :update], [Product, Gift, Author]
       can [:read, :revised], Suggestion
       can [:read, :update, :banned], Comment
-      can :manage, :pages
+      can :manage, :page
     elsif user.user?
       can [:index, :show], [Detail]
       can [:edit, :update, :destroy], Comment, user_id: user.id
@@ -20,9 +20,12 @@ class Ability
       can [:index, :create, :destroy], Wishlist
       can [:create, :new], Suggestion
       can :manage, Billing
+      can :manage, :page
+      can :manage, :profile
     else
       can [:index, :show], [Detail, Gifts]
       can :view_for_category, Detail
+      can :manage, :page
     end
     #
     # The first argument to `can` is the action you are giving the user
