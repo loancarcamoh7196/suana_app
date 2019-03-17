@@ -84,13 +84,13 @@
 				<ul class="main-menu">
 					<li> <%= link_to 'Home', root_path, title: 'Nuestras novedades estan aquí' %> </li>
 					<li><%= link_to 'Catálogo<span class="new">New</span>'.html_safe, details_path, title: 'Todos nuestros productos ;)' %></li>
-					<li></a></li>
-					<li><%= link_to 'Manga' %></li>
-					<li><a href="#">Libros  </a> </li>
-					<li><a href="#">Revistas</a>
+					
+					<!-- <li><%#= link_to 'Manga' %></li>-->
+					<%# <li><a href="#">Libros  </a> </li>
+					<li><a href="#">Revistas</a> %>
 						
-					</li>
-					<li><a href="#">Nosotros</a>
+					<%# </li> %>
+					<%# <li><a href="#">Nosotros</a>
 						<ul class="sub-menu">
 							<li><a href="./product.html">Product Page</a></li>
 							<li><a href="./category.html">Category Page</a></li>
@@ -98,7 +98,7 @@
 							<li><a href="./checkout.html">Checkout Page</a></li>
 							<li><a href="./contact.html">Contact Page</a></li>
 						</ul>
-					</li>
+					</li> %>
 					
 					<li><%= link_to 'Administración', title: 'Hola vendedor :D' %>
 						<ul class="sub-menu">
