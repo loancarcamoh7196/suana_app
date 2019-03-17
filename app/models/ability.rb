@@ -23,7 +23,7 @@ class Ability
       can :manage, :page
       can :manage, :profile
     else
-      can [:index, :show], [Detail, Gifts]
+      can [:index, :show], [Detail, Gift]
       can :view_for_category, Detail
       can :manage, :page
     end
