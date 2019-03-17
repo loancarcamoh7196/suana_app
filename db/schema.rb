@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_231806) do
+ActiveRecord::Schema.define(version: 2019_03_16_223110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -261,6 +261,9 @@ ActiveRecord::Schema.define(version: 2019_03_14_231806) do
     t.string "phone_number"
     t.integer "phone_type", default: 0
     t.integer "points", default: 0
+    t.string "provider"
+    t.string "uid"
+    t.string "image", default: "<i class=\"fas fa-user-astronaut fa-4x\"></i>"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -40,7 +40,16 @@
 									<div class="up-item">
 										<%= link_to '<i class="fas fa-heart text-danger"></i> Mi lista de deseos  '.html_safe, wishlists_path  %>
 										<div class="shopping-card ">
-											<a href="<%= profiles_path %>"><%= current_user.name %></a>
+											<a href="<%= profiles_path %>">
+												
+												<% if current_user.image != '<i class="fas fa-user-astronaut fa-4x"></i>' %>
+													<%= image_tag current_user.image, class: 'rounded-circle' %>
+												<% else %>
+													<%= current_user.image.html_safe %>
+												<% end %>
+												
+												<%= current_user.name %>
+											</a>
 											<%= link_to '<i class="flaticon-profile "></i>  Cerrar sesión'.html_safe, destroy_user_session_path, method: :delete %>
 										</div>   	
 										
