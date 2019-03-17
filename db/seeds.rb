@@ -1361,6 +1361,17 @@ categories.each do |c|
 end
 # Fin - Inserciones para Category
 
+Brand.destroy_all
+categories = [
+	{ 
+		name: 'Revista',
+		description: '',
+	},{
+		name: 'Manga',
+		description: 'Manga (漫画 o まんが) es la palabra japonesa para designar las historietas en general. Fuera de Japón se utiliza tanto para referirse a las historietas de origen japonés como al estilo de dibujo utilizado en estas. '
+	}
+]
+
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 

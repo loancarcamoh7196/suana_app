@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-    
+  authorize_resource :class => false 
+
+  
   def index
     @user = User.find(current_user.id)
     @wishlists = current_user.wishlists
