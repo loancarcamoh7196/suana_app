@@ -1474,18 +1474,10 @@ Gift.create(name: 'Figura Pop!, Spiderman', description: 'Merchandasing | Spider
 
 
 #Usuarios
-	#Usuario de prueba
+  #Usuario de prueba
+  User.where(email: 'vendor@suana.cl').destroy_all
 		#Usuario vendedor
-		User.create(
-			email: 'vendor@suana.cl',
-			password: '20.suana.19', 
-			password_confirmation: '20.suana.19', 
-			name: 'Vendedor Uno', 
-			rut: '11.111.111-1', 
-			role: 'vendor', 
-			phone_number: '+56 999 999 999', 
-			phone_type: "celular" 
-		)
+		User.create( email: 'vendor@suana.cl', password: '123456', password_confirmation: '123456', name: 'Vendedor Uno', rut: '11.111.111-1', role: 'vendor', phone_number: '+56 999 999 999', phone_type: "celular" )
 
 
 
