@@ -18,5 +18,7 @@
 //= require jquery.nicescroll.min
 //= require jquery.zoom.min
 // require jquery-ui.min
+//= require Chart.bundle
+//= require chartkick
 //= require main
 // require_tree .
