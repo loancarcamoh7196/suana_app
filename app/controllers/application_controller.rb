@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery
-  check_authorization unless: :devise_controller? 
+  check_authorization unless: :devise_controller? || :admin_comments_controller || :admin_dashboard_controller
 
-  
+  def admin_comments_controller?
+    controller_path == 'admin/comments'
+  end
   protected
 
   def configure_permitted_parameters
