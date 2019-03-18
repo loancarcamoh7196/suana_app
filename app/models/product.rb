@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :author
-  has_many :details
+  has_many :details, dependent: :destroy
   has_many :clusters, dependent: :destroy
   has_many :categories, through: :clusters
 

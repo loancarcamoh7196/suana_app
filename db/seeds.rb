@@ -1159,7 +1159,7 @@ authors = [
 		name: 'Atsushi Nishigori',
 		description: ''
 	},{
-		name: 'Eiichirō Oda',
+		name: 'Eiichiro Oda',
 		description: '尾田栄一郎 Oda Eiichirō es un mangaka nacido el 1 de enero de 1975 en la prefectura de Kumamoto. Conocido por su serie de manga One Piece (1997-presente) cuya obra es la más vendida de todos los tiempos con más de 450 millones de copias en circulación en todo el mundo y la única en la historia en conseguir un récord Guinness al ser el manga más vendido de todos los tiempos. '
 	},{
 	name: 'Kōsuke Hamada',
@@ -1199,7 +1199,17 @@ authors = [
 	{ name: 'abec' },
 	{ name: 'Abi Umeda' },
 	{ name: 'Adachitoka ' },
-	{ name: 'Anónimo' },
+  { name: 'Anónimo' },
+  { name: 'Masashi Kishimoto'},
+  { name: 'Hajime Isayama ' },
+  { name: 'Sui Ishida ' },
+  { name: 'Carlos Pacheco'},
+  { name: 'Dan Panosian' },
+  { name: 'Brian Michael Bendis' },
+  { name: 'David Aja' },
+  { name: 'Jim Starlin' },
+  { name: 'Nisioisin' },
+  { name: '' }
 ]
 authors.each do |a|
 	Author.create(
@@ -1361,16 +1371,103 @@ categories.each do |c|
 end
 # Fin - Inserciones para Category
 
+#Inserciones Marcas
 Brand.destroy_all
-categories = [
-	{ 
-		name: 'Revista',
-		description: '',
-	},{
-		name: 'Manga',
-		description: 'Manga (漫画 o まんが) es la palabra japonesa para designar las historietas en general. Fuera de Japón se utiliza tanto para referirse a las historietas de origen japonés como al estilo de dibujo utilizado en estas. '
-	}
+brands = [
+  { name: 'Panini Comics' },
+  { name: 'Norma' },
+  { name: 'Planeta Comics' },
+  { name: 'Pop!' },
+  { name: 'Marvel Comics' },
+  { name: 'DKespañol '},
+  { name: 'Ivréa ' },
+  { name: 'ECC Ediciones '},
+  { name: 'Milky Way Ediciones' },
+  { name: '' }
 ]
+brands.each do |b|
+  Brand.create(name: b[:name])
+end
+#FIN - Inserciones Marcas
+Product.destroy_all
+
+Product.create(title: 'Naruto', description: 'Guiado por el espíritu demoníaco que hay en él, el huérfano Naruto aprende a controlar sus poderes como un ninja en esta serie de anime de aventuras.', author: Author.where(name: 'Masashi Kishimoto').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'One Piece', description: '
+Cuenta la leyenda que el pirata Woonan acumuló un tercio de todo el oro del mundo y se retiró a una isla remota junto con su tesoro. Desde entonces, no han sido pocos los piratas que han tratado de hallar esa isla sin éxito... En el presente, Luffy, Zoro, Usopp y Nami están muriéndose de hambre para variar cuando aparecen tres piratas y les roban su tesoro. En la posterior refriega, rescatan a Tobio, un niño cuyo sueño es encontrar al legendario Woonan y juntos se embarcan en la búsqueda de la Isla de Oro. Pero en su camino se cruza El Drago, un pirata que al igual que Luffy ha comido la fruta demoníaca y posee una potente voz a la que nada puede resistirse... ¿Quién llegará primero a la Isla de Oro y se hará con el tesoro más codiciado de todos los tiempos?', author: Author.where(name: 'Eiichiro Oda').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'Shingeki no Kyojin', description: '', author: Author.where(name: 'Hajime Isayama ').first, point_quantity: 195, is_gift: false)
+Product.create(title: 'Tokyo Ghoul:Re', description: ' ', author: Author.where(name: 'Sui Ishida').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'The Life Of Captain Marvel', description: 'La vida de la capitana Marvel ', author: Author.where(name: 'Carlos Pacheco').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'Batgirl',description: '', author: Author.where(name: 'Dan Panosian').first, point_quantity: 250, is_gift: false)
+Product.create(title: 'Superman', description: '', author: Author.where(name: 'Brian Michael Bendis ').first, point_quantity: 305, is_gift: false)
+Product.create(title: 'Daredevil', description: ' ', author: Author.where(name: 'David Aja ').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'Bakemonogatari', description: ' ', author: Author.where(name: 'Nisioisin').first, point_quantity: 185, is_gift: false)
+Product.create(title: 'Thanos', description: ' ', author: Author.where(name: 'Jim Starlin').first, point_quantity: 185, is_gift: false)
+# FIN - Inserciones Productos
+
+# Inserciones de Detalles
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Panini Comics').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Naruto').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Planeta Comics').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'One Piece').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Norma').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Shingeki no Kyojin').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Norma').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Shingeki no Kyojin').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Norma').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Tokyo Ghoul:Re').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Marvel Comics').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'The Life Of Captain Marvel').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'ECC Ediciones').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Batgirl').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'ECC Ediciones').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Superman').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Marvel Comics').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Daredevil').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Milky Way Ediciones').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Bakemonogatari').first, price: 8, chapter: "#{i+1}")
+end
+
+10.times do |i|
+  Detail.create(unique_identifider: "#{rand(7595929..9999999)}", brand: Brand.where(name: 'Panini Comics').first, quantity: 20, available: true, is_reserved: true,  product: Product.where(title: 'Thanos').first, price: 8, chapter: "#{i+1}")
+end
+
+
+# FIN - Inserciones de Detalles
+
+
+# Inserciones Regalos
+Gift.destroy_all
+Gift.create(name: 'Figura Pop!, Naruto Sabio de los 6 caminos', description: 'Merchandasing | Naruto Sabio de los 6 caminos', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Sakura', description: 'Merchandasing | Sakura , de Naruto', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Hank Pym Unmasked special edition', description: 'Merchandasing | Hank Pym Unmasked special edition, de Rick y Morty', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Flash', description: 'Merchandasing | Flash, de Justice League', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Naruto Sabio de los 6 caminos', description: 'Merchandasing | Naruto Sabio de los 6 caminos', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Ahsoka Special Edition', description: 'Merchandasing | Ahsoka Special Edition, de Star Wars', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Kakashi', description: 'Merchandasing | Kakashi, de Naruto', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Roronoa Zoro', description: 'Merchandasing | Roronoa Zoro', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Goose The Cat', description: 'Merchandasing | Goose The Cat, de Capitana Marvel', points: 5550, available: true, quantity: 10)
+Gift.create(name: 'Figura Pop!, Spiderman', description: 'Merchandasing | Spiderman', points: 5550, available: true, quantity: 10)
+# FIN - Inserciones Regalos
+
+
 
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
