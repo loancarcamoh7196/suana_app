@@ -1,24 +1,8 @@
-# README
+#Detalles de la evaluación
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Link heroku original: https://fast-fortress-43459.herokuapp.com/
+* Link del video: https://youtu.be/R1jdAjrsk4M
 
-Things you may want to cover:
+* Link repo bueno github: https://github.com/nine9671/tienda_suana_app
+* Link heroku bueno: https://tiendasuana.herokuapp.com
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
